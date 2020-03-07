@@ -1,7 +1,13 @@
 // See: https://sass-lang.com/
 
+@import "footer";
+@import "header";
+@import "item";
+@import "items";
+@import "messages";
+
 body {
-  background-color: #EEE;
+  background-color: #eee;
 
   h1 {
     color: #244751;
