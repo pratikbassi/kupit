@@ -1,0 +1,26 @@
+.header {
+  width: 100vw;
+  position: sticky;
+  top: 0;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: $color-primary-0 solid medium;
+  background: $rgba-primary-gradient-1-2;
+  .logo {
+    max-height: 10em;
+  }
+}
+
+.navbar-nav {
+  border: $color-primary-1 solid medium;
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  justify-content: end;
+}
+
+.company {
+  display: inherit;
+}
