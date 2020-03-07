@@ -3,16 +3,16 @@
 
 <head>
   <title>Home Page</title>
-  <%- include('../partials/_head') %>
+  <%- include('./partials/_head') %>
 </head>
 
 <body>
-  <%- include('../partials/_navbar') %>
+  <%- include('./partials/_navbar') %>
   <main class="container-fluid container-items">
-    <% for( let index = 0; index < array.length; index++ ) { %>
-    <%- include('../partials/_item') %>
+    <% for( let index = 0; index < 8; index++ ) { %>
+    <%- include('./partials/_item') %>
     <% } %>
-    <%- include('../partials/_footer') %>
+    <%- include('./partials/_footer') %>
   </main>
 </body>
 
