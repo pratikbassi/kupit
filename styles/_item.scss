@@ -1,0 +1,19 @@
+.container-item {
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+  grid-template-rows: 3fr 1fr 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  .item-img {
+    grid-area: 1 / 1 / 3 / 2;
+  }
+  .container-title {
+    grid-area: 3 / 1 / 4 / 4;
+  }
+  .item-info {
+    grid-area: 2 / 2 / 3 / 4;
+  }
+  .item-info {
+    grid-area: 1 / 3 / 2 / 4;
+  }
+}
