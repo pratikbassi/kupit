@@ -10,3 +10,13 @@
 html {
   font-size: $base-font-size;
 }
+
+button,
+input {
+  > a,
+  :active,
+  :hover {
+    text-decoration: none;
+    color: $color-primary-4;
+  }
+}

@@ -38,6 +38,12 @@ $rgba-primary-2: rgba(255, 144, 136, 1);
 $rgba-primary-3: rgba(217, 65, 53, 1);
 $rgba-primary-4: rgba(61, 11, 7, 1);
 
+$rgba-primary-gradient-1-2: radial-gradient(
+  circle,
+  rgba(255, 184, 179, 1) 0%,
+  rgba(255, 144, 136, 1) 100%
+);
+
 $rgba-secondary-1-0: rgba(62, 142, 153, 1); // Main Secondary color (1) */
 $rgba-secondary-1-1: rgba(154, 210, 218, 1);
 $rgba-secondary-1-2: rgba(100, 175, 185, 1);
