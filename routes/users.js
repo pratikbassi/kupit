@@ -51,7 +51,6 @@ module.exports = db => {
       req.body.phone_number === "" ||
       req.body.name === ""
     ) {
-      console.log(req.body);
       res.send({ error: "Entities can't be empty" });
     } else {
       // Check if the user has already existed, return null if not existed
