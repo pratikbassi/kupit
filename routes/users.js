@@ -25,11 +25,11 @@ const addUser = function(db, user) {
   return db
     .query(
       `
-INSERT INTO users(name,email,password,phone_number,is_admin)
-VALUES($1,$2,$3,$4,$5)
+INSERT INTO users(name,email,password,phone_number)
+VALUES($1,$2,$3,$4)
 RETURNING *;
 `,
-      [user.name, user.email, user.password, user.phone_number, user.is_admin]
+      [user.name, user.email, user.password, user.phone_number]
     )
     .then(res => {
       const user = res.rows;
