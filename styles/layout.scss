@@ -1,11 +1,12 @@
 // See: https://sass-lang.com/
-@import "colors";
+@import "variables";
 @import "footer";
 @import "header";
 @import "item";
 @import "items";
 @import "messages";
+@import "navbar";
 
-body {
-  background-color: #eee;
+html {
+  font-size: $base-font-size;
 }

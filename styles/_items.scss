@@ -1,0 +1,31 @@
+.container-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+}
+
+.container-item {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 3fr 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  grid-template-areas:
+    "image favourite"
+    "image info "
+    "title title";
+  max-width: 800px;
+  border: $color-primary-3 solid medium;
+  margin: 1em;
+  .item-img {
+    grid-area: image;
+  }
+  .favourite {
+    grid-area: favourite;
+  }
+  .item-info {
+    grid-area: info;
+  }
+  .item-title {
+    grid-area: title;
+  }
+}

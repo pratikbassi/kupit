@@ -65,8 +65,7 @@ module.exports = db => {
               user.password
             );
             if (isMatch) {
-              //req.session.userId = user.id;
-              console.log("success");
+              req.session.userId = user.id;
               res.redirect("/");
             } else {
               res.send({ error: "Invalid credentials" });
@@ -79,8 +78,7 @@ module.exports = db => {
                 res.send({ error: "Something wrong happens" });
                 return;
               } else {
-                console.log("success");
-                //req.session.userId = user.id;
+                req.session.userId = user.id;
                 res.redirect("/");
               }
             });
