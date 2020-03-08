@@ -25,11 +25,11 @@ const addUser = function(db, user) {
   return db
     .query(
       `
-INSERT INTO users(name,email,password,phone_number)
-VALUES($1,$2,$3,$4)
+INSERT INTO users(name,email,password,phone_number,is_admin)
+VALUES($1,$2,$3,$4,$5)
 RETURNING *;
 `,
-      [user.name, user.email, user.password, user.phone_number]
+      [user.name, user.email, user.password, user.phone_number, user.is_admin]
     )
     .then(res => {
       const user = res.rows;
@@ -64,7 +64,7 @@ module.exports = db => {
               user.password
             );
             if (isMatch) {
-              req.session.userId = user.id;
+              req.session.user = user;
               res.redirect("/");
             } else {
               res.send({ error: "Invalid credentials" });
@@ -77,7 +77,7 @@ module.exports = db => {
                 res.send({ error: "Something wrong happens" });
                 return;
               } else {
-                req.session.userId = user.id;
+                req.session.user = user;
                 res.redirect("/");
               }
             });
