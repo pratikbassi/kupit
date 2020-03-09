@@ -17,6 +17,24 @@ const getItemWithId = function(db, id) {
     });
 };
 
+const getFeaturedItems = function(db) {
+  return db
+    .query(
+      `
+  SELECT * FROM items
+  WHERE is_featured = true
+  `
+    )
+    .then(res => {
+      const item = res.rows;
+      if (item) {
+        return Promise.resolve(item);
+      } else {
+        return Promise.resolve(null);
+      }
+    });
+};
+
 const addItem = function(db, item) {
   return db
     .query(
@@ -72,4 +90,10 @@ const removeItem = function(db, itemId) {
     });
 };
 
-module.exports = { getItemWithId, addItem, markSold, removeItem };
+module.exports = {
+  getItemWithId,
+  addItem,
+  markSold,
+  removeItem,
+  getFeaturedItems
+};

@@ -5,21 +5,23 @@ $(() => {
     return div.innerHTML;
   };
 
-  $('.container-item').click(function(params) {
+  $(".container-items").on("click", ".modal-show", function(params) {
+    console.log("click detected");
+
     const $this = $(this);
-    const $modal = $('#exampleModalBody');
-    $modal.empty();
+    const $modalBody = $("#modalBody");
+    $modalBody.empty();
     $.ajax({
       method: "GET",
-      url: `/items/${$this.data('itemid')}`
-    }).done((items) => {
+      url: `/items/${$this.data("itemid")}`
+    }).done(items => {
       const image_url = escapeTxt(items.image_url);
       const title = escapeTxt(items.title);
       const stock = escapeTxt(items.stock);
       const city = escapeTxt(items.city);
       const description = escapeTxt(items.description);
       console.log(image_url, title, stock, city, description);
-      
+
       const htmlOutput = `
       <main class="container single-item">
         <div class="image">
@@ -45,7 +47,7 @@ $(() => {
         </div>
       </main>
       `;
-      $modal.append(htmlOutput);
+      $modalBody.append(htmlOutput);
     });
-  })
+  });
 });

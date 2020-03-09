@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
-//const checkAdmin = require("./middlewares/checkAdmin");
 const checkLogin = require("./middlewares/checkLogin");
 const {
   getItemWithId,
   addItem,
   markSold,
-  removeItem
+  removeItem,
+  getFeaturedItems
 } = require("./helpers/itemHelper");
 
 const checkOwner = function(db, itemId) {
@@ -34,6 +34,15 @@ module.exports = db => {
   //Render item_new ejs page
   router.get("/item/new", checkLogin, (req, res) => {
     res.render("item_new");
+  });
+
+  // Fetch the featured items
+  router.get("/featured", (req, res) => {
+    getFeaturedItems(db)
+      .then(items => {
+        res.send(items);
+      })
+      .catch(e => res.send(e));
   });
 
   //List a new item
