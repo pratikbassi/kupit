@@ -1,7 +1,7 @@
 .header {
-  width: 100vw;
-  position: sticky;
-  top: 0;
+  // width: 100vw;
+  // position: sticky;
+  // top: 0;
   min-height: 10vh;
   display: flex;
   flex-direction: row;
@@ -9,7 +9,10 @@
   border: $color-primary-0 solid medium;
   background: $rgba-primary-gradient-1-2;
   .logo {
-    max-height: 10em;
+    max-height: 8em;
+  }
+  .company {
+    display: inherit;
   }
 }
 
@@ -17,10 +20,10 @@
   border: $color-primary-1 solid medium;
   display: flex;
   flex-direction: row;
-  align-items: end;
-  justify-content: end;
+  align-self: end;
+  >button {
+    margin: 0 1em;
+  }
 }
 
-.company {
-  display: inherit;
-}
+
