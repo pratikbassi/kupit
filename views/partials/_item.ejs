@@ -1,4 +1,4 @@
-<section class="container-md container-item">
+<section id="item-id-<%= index %>" data-itemId="<%= index %> " class="container-md container-item <%= true ? 'item-sold': '' %> ">
   <div class="item-img">
     <img class="img-thumbnail rounded" src="https://www.dictionary.com/e/wp-content/uploads/2019/05/birb-2-380x380.jpg" />
   </div>
@@ -6,10 +6,13 @@
     <img class="favourite favourite_on" src="https://toppng.com/public/uploads/preview/heart-emoji-11549911583t6kulc2slx.png">
   </div>
   <div class="item-info">
-    <h5>_ in Stock</h5>
+    <h5><%= 5 %>  in Stock</h5>
     <h6>Located: Vancouver</h6>
   </div>
   <div class="item-title">
     <h5>meross Digital Alarm Clock for Bedrooms, Real Wood, LED Display Desk Clock</h5>
+    <button id="neat" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      View more info
+    </button>
   </div>
 </section>
