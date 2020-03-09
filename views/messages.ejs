@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Home Page</title>
+  <%- include('./partials/_head') %>
+</head>
+
+<body>
+  <%- include('./partials/_navbar') %>
+  <main class="container-fluid container-items">
+    <aside class="messages-list">
+      <% for( let index = 0; index < 8; index++ ) { %>
+        <div>
+          <h4>Item name here</h4>
+          <p>Owner id here</p>
+        </div>
+      <% } %>
+    </aside>
+    <section class="container-messages">
+
+      <% for( let index[mIndex] = 0; index[mIndex] < 8; index[mIndex]++ ) { %>
+        <div>
+          <p>this is a text message</p>
+        </div>
+      <% } %>
+    </section>
+  </main>
+  <%- include('./partials/_footer') %>
+</body>
+
+</html>
