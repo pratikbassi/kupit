@@ -71,7 +71,7 @@ app.get("/frontpage", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("frontpage");
 });
 
 app.listen(PORT, () => {
