@@ -1,4 +1,8 @@
 $(() => {
+  const $modal = $("#modal");
+  const $containerItems = $(".container-items");
+
+  // escapes dangerous html
   const escapeTxt = function(str) {
     const div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
@@ -45,5 +49,21 @@ $(() => {
     for (const obj of items) {
       $(".container-items").prepend(generateItemHTML(obj));
     }
+  });
+
+  $modal.on("submit", "#search-form", function(event) {
+    event.preventDefault();
+    const $this = $(this);
+    console.log($this.serialize());
+    $.ajax({
+      method: "GET",
+      url: "/search",
+      data: $this.serialize()
+    }).done(items => {
+      $containerItems.empty();
+      for (const obj of items) {
+        $containerItems.prepend(generateItemHTML(obj));
+      }
+    });
   });
 });
