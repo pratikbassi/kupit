@@ -17,24 +17,24 @@ $(() => {
   <form method="POST" action="/api/users/login" id="login" class="login tab-pane fade show active">
   <h2>Login</h2>
   <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
+    <label for="login-email">Email address</label>
     <input
       type="email"
       class="form-control"
       placeholder="Enter Email"
-      id="exampleInputEmail1"
+      id="login-email"
       name="email"
       aria-describedby="emailHelp"
     />
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
+    <label for="login-password">Password</label>
     <input
       type="password"
       placeholder="Enter Password"
       name="password"
       class="form-control"
-      id="exampleInputPassword1"
+      id="login-password"
     />
   </div>
   <button type="submit" class="btn btn-primary">Login</button>
@@ -43,24 +43,24 @@ $(() => {
   <form method="POST" action="/api/users/register" id="register" class="register tab-pane fade">
   <h2>Register</h2>
   <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
+    <label for="register-email">Email address</label>
     <input
       type="email"
       class="form-control"
       placeholder="Enter Email"
-      id="exampleInputEmail1"
+      id="register-email"
       name="email"
       aria-describedby="emailHelp"
     />
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
+    <label for="register-password">Password</label>
     <input
       type="password"
       placeholder="Enter Password"
       name="password"
       class="form-control"
-      id="exampleInputPassword1"
+      id="register-password"
     />
   </div>
   <div class="form-group">
