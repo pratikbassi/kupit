@@ -16,8 +16,6 @@ $(() => {
     const city = escapeTxt(obj.city);
     const id = escapeTxt(obj.id);
     const is_sold = escapeTxt(obj.is_sold);
-    console.log("onload: ", image_url, title, stock, city, id);
-
     const htmlOutput = `
     <section id="item-id-${id}" 
       class="container-md container-item ${is_sold ? "is-sold" : ""}">
