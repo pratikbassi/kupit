@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 //const checkAdmin = require("./middlewares/checkAdmin");
 const checkLogin = require("./middlewares/checkLogin");
-const user_data_search = require('../db/db_scripts/user_page_funcs')
+const {user_data_search, user_message_list} = require('../db/db_scripts/user_page_funcs')
 
 
 
