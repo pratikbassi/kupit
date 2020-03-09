@@ -20,6 +20,7 @@
   border: $color-primary-1 solid medium;
   display: flex;
   flex-direction: row;
+  align-self: flex-end;
   align-self: end;
   >button {
     margin: 0 1em;
