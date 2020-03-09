@@ -25,4 +25,28 @@ const user_data_search = function (user_id) {
   return pool.query(queryString, values).then(res => res.rows[0]).catch(err => err);
 }
 
-exports.user_data_search = user_data_search;
+const user_message_list = function (user_id) {
+  let values = [user_id];
+  let queryString = `
+  SELECT sender, reciever, item_id, created
+  FROM messages
+  WHERE sender = $1 OR reciever = $1
+  ORDER BY created DESC; `
+
+  return pool.query(queryString, values).then( res => res.rows).catch(err => err)
+}
+
+const user_message = function (message_id) {
+  let values = [message_id];
+  let queryString = `
+  SELECT sender, reciever, item_id, created, body
+  FROM messages
+  WHERE messages.id = $1;
+`
+  console.log('reached');
+
+  return pool.query(queryString, values).then( res => res.rows[0]).catch(err => err)
+}
+
+
+module.exports = {user_data_search, user_message_list, user_message};
