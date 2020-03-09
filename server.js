@@ -53,6 +53,7 @@ const widgetsRoutes = require("./routes/widgets");
 const itemsRoutes = require("./routes/items");
 const inboxRoutes = require("./routes/inbox");
 const favRoutes = require("./routes/favorite");
+const searchRoutes = require("./routes/search");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -61,6 +62,7 @@ app.use("/api/widgets", widgetsRoutes(db));
 app.use("/", itemsRoutes(db));
 app.use("/", inboxRoutes(db));
 app.use("/", favRoutes(db));
+app.use("/", searchRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
