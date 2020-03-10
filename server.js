@@ -68,11 +68,12 @@ app.use("/", searchRoutes(db));
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
-app.get("/frontpage", (req, res) => {
-  res.render("frontpage");
+app.get("/", (req, res) => {
+  const user = req.session.user;
+  res.render("frontpage", { user: user });
 });
 
-app.get("/", (req, res) => {
+app.get("/frontpage", (req, res) => {
   res.render("frontpage");
 });
 

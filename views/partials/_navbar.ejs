@@ -11,7 +11,7 @@
       <a href="">Search</a>
     </button>
 
-    <% if (true) { %>
+    <% if (user ===undefined) { %>
     <button
       type="button"
       class="nav-item btn btn-primary login"
@@ -34,7 +34,7 @@
     </button>
 
     <button type="button" class="nav-item btn btn-outline-danger">
-      <a href="">Logout</a>
+      <a href="/api/users/logout">Logout</a>
     </button>
     <% } %>
   </nav>
