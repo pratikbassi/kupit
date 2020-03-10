@@ -48,8 +48,14 @@ const user_message = function (message_id) {
   return pool.query(queryString, values).then( res => res.rows[0]).catch(err => err)
 }
 
-const submit_message = function (sender, reciever, body) {
-
+const submit_message = function (sender, reciever, body, item_id) {
+  let values = [sender, reciever, item_id, body];
+  let queryString = `
+  INSERT INTO messages (sender, reciever, item_id, body)
+  VALUES ($1, $2, $3, $4)
+  RETURNING * ;
+  `
+  return pool.query(queryString, values).then(res => res.rows[0].catch(err => err))
 }
 
 
