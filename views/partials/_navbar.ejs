@@ -1,34 +1,26 @@
 <div class="navbar navbar-expand-sm sticky-top header">
   <div class="navbar-brand company">
-    <img
-      class="logo rounded"
-      src="https://upload.wikimedia.org/wikipedia/commons/d/db/Pardalotus_with_nesting_material.jpg"
-    />
+    <img class="logo rounded" src="images/logo.jpg" />
     <h1>kupit</h1>
   </div>
   <nav class="navbar-nav">
     <button id="search-show" type="button" class="nav-item btn btn-primary" data-toggle="modal" data-target="#modal">Search</button>
 
-    <% if (user ===undefined) { %>
-    <button
-      type="button"
-      class="nav-item btn btn-primary login"
-      data-toggle="modal"
-      data-target="#modal"
-    >
+    <% if (user === undefined) { %>
+    <button type="button" class="nav-item btn btn-primary login" data-toggle="modal" data-target="#modal">
       Login
     </button>
 
     <% } else { %>
 
     <button type="button" class="nav-item btn btn-primary">
-      <a href="">Favourites</a>
+      <a href="/favorite/<%= user.id %> ">Favourites</a>
     </button>
     <button type="button" class="nav-item btn btn-primary">
-      <a href="">My Listings</a>
+      <a href="/api/users/<%= user.id %>/items ">My Listings</a>
     </button>
     <button type="button" class="nav-item btn btn-primary">
-      <a href="">My Messages</a>
+      <a href="/api/users/<%= user.id %>/inbox ">My Messages</a>
     </button>
 
     <button type="button" class="nav-item btn btn-outline-danger">
