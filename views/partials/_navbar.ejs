@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg ">
+<nav class="navbar navbar-expand-lg">
   <img class="logo rounded" src="images/logo.jpg" />
-  <a class="navbar-brand" href="#">Kupit</a>
+  <a class="navbar-brand" href="/">Kupit</a>
   <button
     class="navbar-toggler"
     type="button"
@@ -15,53 +15,50 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
-    <form class="my-2 my-lg-0">
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <ul class="navbar-nav">
-          <li
-            id="search-show"
-            class="nav-item mr-sm-3 py-3 px-2"
-            data-toggle="modal"
-            data-target="#modal"
-          >
-            <p class="nav-item__text">Search</p>
-          </li>
 
-          <% if (user === undefined) { %>
-          <li
-            class="nav-item login mr-sm-3 py-3 px-2 nav-item__text"
-            data-toggle="modal"
-            data-target="#modal"
-          >
-            Login
-          </li>
+    <ul class="navbar-nav navbar-nav__menu my-2 my-lg-0">
+      <li
+        id="search-show"
+        class="nav-item mr-lg-3 mt-lg-1 py-lg-3 px-lg-2"
+        data-toggle="modal"
+        data-target="#modal"
+      >
+        <p class="nav-item__text">Search</p>
+      </li>
 
-          <% } else { %>
-          <li class="nav-item mr-sm-3 py-3 px-2">
-            <a href="/favorite/<%= user.id %> " class="nav-item__text">
-              Favourites
-            </a>
-          </li>
-          <li
-            id="my-listings"
-            data-userid="<%= user.id %>"
-            class="nav-item  mr-sm-3 py-3 px-2"
-          >
-            <p class="nav-item__text">Listings</p>
-          </li>
-          <li class="nav-item mr-sm-3 py-3 px-2">
-            <a href="/user" class="nav-item__text">
-              Messages
-            </a>
-          </li>
-          <li class="nav-item  mr-sm-2 py-3 px-2">
-            <a href="/api/users/logout" class="nav-item__text">
-              Logout
-            </a>
-          </li>
-          <% } %>
-        </ul>
-      </div>
-    </form>
+      <% if (user === undefined) { %>
+      <li
+        class="nav-item login mr-lg-3 mt-lg-1 py-lg-3 px-lg-2 "
+        data-toggle="modal"
+        data-target="#modal"
+      >
+        <p class="nav-item__text">Login</p>
+      </li>
+
+      <% } else { %>
+      <li class="nav-item mr-lg-3 mt-lg-1 py-lg-3 px-lg-2">
+        <a href="/favorite/<%= user.id %> " class="nav-item__text">
+          Favourites
+        </a>
+      </li>
+      <li
+        id="my-listings"
+        data-userid="<%= user.id %>"
+        class="nav-item  mr-lg-3 mt-lg-1 py-lg-3 px-lg-2"
+      >
+        <p class="nav-item__text">Listings</p>
+      </li>
+      <li class="nav-item mr-lg-3 mt-lg-1 py-lg-3 px-lg-2">
+        <a href="/user" class="nav-item__text">
+          Messages
+        </a>
+      </li>
+      <li class="nav-item  mr-lg-2 mt-lg-1 py-lg-3 px-lg-2">
+        <a href="/api/users/logout" class="nav-item__text">
+          Logout
+        </a>
+      </li>
+      <% } %>
+    </ul>
   </div>
 </nav>
