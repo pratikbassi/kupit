@@ -42,23 +42,11 @@ RETURNING *;
 };
 
 module.exports = db => {
-  // Login or Register
   router.post("/login", (req, res) => {
-    // req.body email, password, phone_num can't be empty
-    if (
-      req.body.email === "" ||
-      req.body.password === "" ||
-      req.body.phone_number === "" ||
-      req.body.name === ""
-    ) {
-      res.send({ error: "Entities can't be empty" });
-    } else {
-      // Check if the user has already existed, return null if not existed
+    if (req.body.email && req.body.password) {
       getUserWithEmail(db, req.body.email)
         .then(user => {
-          //Login OR Register
           if (user) {
-            //Check password
             const isMatch = bcrypt.compareSync(
               req.body.password,
               user.password
@@ -70,9 +58,30 @@ module.exports = db => {
               res.send({ error: "Invalid credentials" });
             }
           } else {
-            const newUser = req.body;
-            newUser.password = bcrypt.hashSync(newUser.password, 12);
-            addUser(db, newUser).then(user => {
+            res.json("Email not found, please register first.");
+          }
+        })
+        .catch(e => res.send(e));
+    } else {
+      res.send({ error: "Entities can't be empty" });
+    }
+  });
+
+  router.post("/register", (req, res) => {
+    if (
+      req.body.email &&
+      req.body.password &&
+      req.body.phone_number &&
+      req.body.name
+    ) {
+      getUserWithEmail(db, req.body.email).then(user => {
+        if (user) {
+          res.send({ error: "Email already existed, please use other emails" });
+        } else {
+          const newUser = req.body;
+          newUser.password = bcrypt.hashSync(newUser.password, 12);
+          addUser(db, newUser)
+            .then(user => {
               if (!user) {
                 res.send({ error: "Something wrong happens" });
                 return;
@@ -80,15 +89,17 @@ module.exports = db => {
                 req.session.user = user;
                 res.redirect("/");
               }
-            });
-          }
-        })
-        .catch(e => res.send(e));
+            })
+            .catch(e => res.send(e));
+        }
+      });
+    } else {
+      res.send({ error: "Entities can't be empty" });
     }
   });
 
   // Logout
-  router.post("/logout", (req, res) => {
+  router.get("/logout", (req, res) => {
     req.session = null;
     res.redirect("/");
   });
