@@ -63,6 +63,7 @@ $(() => {
   $("#my-listings").on("click", function() {
     event.preventDefault();
     const $this = $(this);
-    loadAjax("/search", { user: $this.data("userid") });
+    const userID = escapeTxt($this.data("userid"));
+    loadAjax(`/items/user/${userID}`);
   });
 });
