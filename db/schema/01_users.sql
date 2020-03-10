@@ -10,7 +10,7 @@ CREATE TABLE users
   email VARCHAR(255) NOT NULL,
   phone_number VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  profile_picture VARCHAR(255) DEFAULT 'https://i.imgur.com/4GyU6gt.mp4'
+  profile_picture VARCHAR(255) DEFAULT 'https://i.imgur.com/4GyU6gt.jpg'
 );
 
 
