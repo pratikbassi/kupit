@@ -17,6 +17,25 @@ const getItemWithId = function(db, id) {
     });
 };
 
+const getItemsWithUserId = function(db, userId) {
+  return db
+    .query(
+      `
+SELECT * FROM items
+WHERE user_id = $1
+`,
+      [userId]
+    )
+    .then(res => {
+      const items = res.rows;
+      if (items) {
+        return Promise.resolve(items);
+      } else {
+        return Promise.resolve(null);
+      }
+    });
+};
+
 const getFeaturedItems = function(db) {
   return db
     .query(
@@ -92,6 +111,7 @@ const removeItem = function(db, itemId) {
 
 module.exports = {
   getItemWithId,
+  getItemsWithUserId,
   addItem,
   markSold,
   removeItem,
