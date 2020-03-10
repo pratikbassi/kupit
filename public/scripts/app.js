@@ -1,6 +1,6 @@
 $(() => {
   const $modal = $("#modal");
-  const $containerItems = $(".container-items");
+  const $containerItems = $("#container-items");
 
   // escapes dangerous html
   const escapeTxt = function(str) {
@@ -40,28 +40,29 @@ $(() => {
     return htmlOutput;
   };
 
-  $.ajax({
-    method: "GET",
-    url: "/featured"
-  }).done(items => {
-    for (const obj of items) {
-      $(".container-items").prepend(generateItemHTML(obj));
-    }
-  });
-
-  $modal.on("submit", "#search-form", function(event) {
-    event.preventDefault();
-    const $this = $(this);
-    console.log($this.serialize());
+  const loadAjax = (url, params) => {
     $.ajax({
       method: "GET",
-      url: "/search",
-      data: $this.serialize()
+      url: url,
+      data: params
     }).done(items => {
       $containerItems.empty();
       for (const obj of items) {
         $containerItems.prepend(generateItemHTML(obj));
       }
     });
+  };
+  loadAjax("/featured");
+
+  $modal.on("submit", "#search-form", function(event) {
+    event.preventDefault();
+    const $this = $(this);
+    loadAjax("/search", $this.serialize());
+  });
+
+  $("#my-listings").on("click", function() {
+    event.preventDefault();
+    const $this = $(this);
+    loadAjax("/search", { user: $this.data("userid") });
   });
 });

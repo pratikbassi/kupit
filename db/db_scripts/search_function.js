@@ -24,6 +24,12 @@ const general_search = function(db, options) {
     AND price <= $${values.length}
     `;
   }
+  if (options.user) {
+    values.push(options.user);
+    queryString += `
+    AND user_id = $${values.length}
+    `;
+  }
 
   queryString += `;`;
 

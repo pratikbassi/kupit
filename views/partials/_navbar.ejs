@@ -16,11 +16,11 @@
     <button type="button" class="nav-item btn btn-primary">
       <a href="/favorite/<%= user.id %> ">Favourites</a>
     </button>
-    <button type="button" class="nav-item btn btn-primary">
-      <a href="/api/users/<%= user.id %>/items ">My Listings</a>
+    <button id="my-listings" data-userid="<%= user.id %> " type="button" class="nav-item btn btn-primary">
+      My Listings
     </button>
     <button type="button" class="nav-item btn btn-primary">
-      <a href="/api/users/<%= user.id %>/inbox ">My Messages</a>
+      <a href="/user">My Messages</a>
     </button>
 
     <button type="button" class="nav-item btn btn-outline-danger">

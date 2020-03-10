@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Home Page</title>
-    <%- include('./partials/_head') %>
-  </head>
 
-  <body>
-    <%- include('./partials/_navbar',{user:user}) %>
-    <main class="container-fluid container-items"></main>
-    <%- include('./partials/_modal') %> <%- include('./partials/_footer') %>
-  </body>
+<head>
+  <title>Home Page</title>
+  <%- include('./partials/_head') %>
+</head>
+
+<body>
+  <%- include('./partials/_navbar',{user:user}) %>
+  <main id="container-items" class="container-fluid container-items"></main>
+  <%- include('./partials/_modal') %> <%- include('./partials/_footer') %>
+</body>
+
 </html>
