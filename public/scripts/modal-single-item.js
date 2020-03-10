@@ -5,16 +5,15 @@ $(() => {
     return div.innerHTML;
   };
 
-  const loadSingleItemModal = function(url, params) {};
-
   const generateSingleItemHTML = obj => {
+    const id = escapeTxt(obj.id);
     const image_url = escapeTxt(obj.image_url);
     const title = escapeTxt(obj.title);
     const stock = escapeTxt(obj.stock);
     const city = escapeTxt(obj.city);
     const description = escapeTxt(obj.description);
     const htmlOutput = `
-    <main class="container single-item">
+    <main class="container single-item ${obj.is_sold ? "is-sold" : ""}">
       <div class="image">
         <img src="${image_url}">
       </div>
@@ -26,7 +25,7 @@ $(() => {
       </div>
       <div class="message">
         <button>message</button>
-        <i class="material-icons">favorite</i>
+        <i id="fav-item-id-${id}" data-itemid="${id}" class="material-icons">favorite_border</i>
 
       </div>
       <div class="description">
@@ -50,8 +49,19 @@ $(() => {
     $.ajax({
       method: "GET",
       url: `/items/${$this.data("itemid")}`
-    }).done(items => {
-      $modalBody.append(generateSingleItemHTML(items));
-    });
+    })
+      .done(items => {
+        $modalBody.append(generateSingleItemHTML(items));
+      })
+      .then(function(item) {
+        $.ajax({
+          method: "GET",
+          url: `/favorite/${item.id}`
+        }).done(item => {
+          if (item.length) {
+            $(`#fav-item-id-${item[0].id}`).text("favorite");
+          }
+        });
+      });
   });
 });
