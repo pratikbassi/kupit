@@ -4,10 +4,23 @@
     <h1>kupit</h1>
   </div>
   <nav class="navbar-nav">
-    <button id="search-show" type="button" class="nav-item btn btn-primary" data-toggle="modal" data-target="#modal">Search</button>
+    <button
+      id="search-show"
+      type="button"
+      class="nav-item btn btn-primary"
+      data-toggle="modal"
+      data-target="#modal"
+    >
+      Search
+    </button>
 
     <% if (user === undefined) { %>
-    <button type="button" class="nav-item btn btn-primary login" data-toggle="modal" data-target="#modal">
+    <button
+      type="button"
+      class="nav-item btn btn-primary login"
+      data-toggle="modal"
+      data-target="#modal"
+    >
       Login
     </button>
 
@@ -16,8 +29,8 @@
     <button type="button" class="nav-item btn btn-primary">
       <a href="/favorite/<%= user.id %> ">Favourites</a>
     </button>
-    <button id="my-listings" data-userid="<%= user.id %> " type="button" class="nav-item btn btn-primary">
-      My Listings
+    <button type="button" class="nav-item btn btn-primary">
+      <a href="/items/user/<%= user.id %> ">My Listings</a>
     </button>
     <button type="button" class="nav-item btn btn-primary">
       <a href="/user">My Messages</a>

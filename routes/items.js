@@ -3,6 +3,7 @@ const router = express.Router();
 const checkLogin = require("./middlewares/checkLogin");
 const {
   getItemWithId,
+  getItemsWithUserId,
   addItem,
   markSold,
   removeItem,
@@ -27,6 +28,15 @@ module.exports = db => {
       .then(item => {
         res.send(item[0]);
         //res.render("item", item[0]);
+      })
+      .catch(e => res.send(e));
+  });
+
+  //Fetch items of single user
+  router.get("/items/user/:userId", (req, res) => {
+    getItemsWithUserId(db, req.params.userId)
+      .then(items => {
+        res.json(items);
       })
       .catch(e => res.send(e));
   });
