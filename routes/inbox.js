@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 //const checkAdmin = require("./middlewares/checkAdmin");
 const checkLogin = require("./middlewares/checkLogin");
-const {user_data_search, user_message_list, user_message} = require('../db/db_scripts/user_page_funcs')
+const {user_data_search, user_message_list, user_message, submit_message} = require('../db/db_scripts/user_page_funcs')
 
 
 
@@ -38,7 +38,12 @@ module.exports = db => {
       res.send(data)
     })
   })
-
+  router.post('/messages', (req, res) => {
+    console.log(req.body)
+    submit_message(parseFloat(req.body.sender), parseFloat(req.body.reciever), req.body.text, parseFloat(req.body.item_id))
+    .then(data => res.send(201))
+    .catch(err => err)
+  })
 
 
 

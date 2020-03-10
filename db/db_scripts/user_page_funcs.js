@@ -59,4 +59,4 @@ const submit_message = function (sender, reciever, body, item_id) {
 }
 
 
-module.exports = {user_data_search, user_message_list, user_message};
+module.exports = {user_data_search, user_message_list, user_message, submit_message};

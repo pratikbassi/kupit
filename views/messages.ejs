@@ -36,15 +36,15 @@
     </div>
     <div id='message_display' class='container p-3 w-48'>
       Click on a Message to View!
-      <form  id="reply">
-        <textarea placeholder="Reply here!"></textarea>
-        <button> Reply! </button>
-      </form>
-
     </div>
+    <form id="reply">
+      <textarea placeholder="Reply here!" required></textarea>
+      <button type='submit' class='btn btn-light '> Reply! </button>
+    </form>
 
 
   </main>
+  <%- include('./partials/_modal') %>
   <%- include('./partials/_footer') %>
 </body>
 </html>
