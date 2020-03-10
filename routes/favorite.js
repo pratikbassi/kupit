@@ -4,8 +4,8 @@ const checkLogin = require("./middlewares/checkLogin");
 const { fetchFavItems, favItem, unFavItem } = require("./helpers/favHelper");
 
 module.exports = db => {
-  router.get("/favorite/:userId", checkLogin, (req, res) => {
-    fetchFavItems(db, req.params.userId).then(favorites => {
+  router.get("/favorite", checkLogin, (req, res) => {
+    fetchFavItems(db, req.session.user.id).then(favorites => {
       if (!favorites) {
         res.send({ error: "Something wrong happens" });
         return;
@@ -13,6 +13,18 @@ module.exports = db => {
         res.json(favorites);
       }
     });
+  });
+  router.get("/favorite/:itemId", checkLogin, (req, res) => {
+    fetchFavItems(db, req.session.user.id, req.params.itemId).then(
+      favorites => {
+        if (!favorites) {
+          res.send({ error: "Something wrong happens" });
+          return;
+        } else {
+          res.json(favorites);
+        }
+      }
+    );
   });
   router.post("/favorite/:itemId", checkLogin, (req, res) => {
     favItem(db, req.session.user.id, req.params.itemId).then(favorite => {
