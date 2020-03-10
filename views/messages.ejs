@@ -2,31 +2,43 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
+  <title>User</title>
   <%- include('./partials/_head') %>
+  <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+  <script type="text/javascript" src="scripts/inbox_scripts.js"></script>
 </head>
 
 <body>
-  <%- include('./partials/_navbar') %>
-  <main class="container-fluid container-items">
-    <aside class="messages-list">
-      <% for( let index = 0; index < 8; index++ ) { %>
-        <div>
-          <h4>Item name here</h4>
-          <p>Owner id here</p>
-        </div>
-      <% } %>
-    </aside>
-    <section class="container-messages">
 
-      <% for( let index[mIndex] = 0; index[mIndex] < 8; index[mIndex]++ ) { %>
-        <div>
-          <p>this is a text message</p>
+  <%- include('./partials/_navbar') %>
+  <main class="d-flex container-items">
+    <div class = 'container w-48'>
+
+      <div class="d-flex container-items">
+
+        <div class='container w-48'>
+          <img href= '<%=route_arr[4] %> 'alt='https://i.imgur.com/4GyU6gt.mp4' >
         </div>
-      <% } %>
-    </section>
+
+        <div class="container border">
+          <p>User ID: <%- route_arr[0]%> </p>
+          <p>User Name: <%- route_arr[1]%> </p>
+          <p>User Email: <%- route_arr[2]%> </p>
+          <p>User Phone Number: <%- route_arr[3]%> </p>
+        </div>
+      </div>
+
+
+      <div id='message_list' class="container pre-scrollable border">
+
+      </div>
+
+    </div>
+    <div id='message_display' class='container p-3'>
+      Click on a Message to View!
+    </div>
+
   </main>
   <%- include('./partials/_footer') %>
 </body>
-
 </html>

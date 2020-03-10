@@ -28,7 +28,7 @@ const user_data_search = function (user_id) {
 const user_message_list = function (user_id) {
   let values = [user_id];
   let queryString = `
-  SELECT sender, reciever, item_id, created
+  SELECT id, sender, reciever, item_id, created, body
   FROM messages
   WHERE sender = $1 OR reciever = $1
   ORDER BY created DESC; `
@@ -39,7 +39,7 @@ const user_message_list = function (user_id) {
 const user_message = function (message_id) {
   let values = [message_id];
   let queryString = `
-  SELECT sender, reciever, item_id, created, body
+  SELECT id, sender, reciever, item_id, created, body
   FROM messages
   WHERE messages.id = $1;
 `
