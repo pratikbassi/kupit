@@ -17,7 +17,7 @@
       <div class="d-flex container-items">
 
         <div class='container w-48'>
-          <img href= '<%=data[4] %> 'alt='https://i.imgur.com/4GyU6gt.mp4' >
+          <img class='img-fluid img-thumbnail' src="<%=data[4]%>" alt='' >
         </div>
 
         <div class="container border">
@@ -27,20 +27,20 @@
           <p>User Phone Number: <%- data[3]%> </p>
         </div>
       </div>
-
-
-      <div id='message_list' class="container pre-scrollable border">
-
+      <div id='message_list' class="container pre-scrollable border"></div>
+    </div>
+    <div class='container'>
+      <div id='message_display' class='container row p-3 w-48'>
+        Click on a Message to View!
       </div>
-
+      <div class='container row'>
+        <form id="reply">
+          <textarea placeholder="Reply here!" required></textarea>
+          <button type='submit' class='btn btn-light '> Reply! </button>
+        </form>
+      </div>
+      <div id='submitted' class="container row"> submitted!</div>
     </div>
-    <div id='message_display' class='container p-3 w-48'>
-      Click on a Message to View!
-    </div>
-    <form id="reply">
-      <textarea placeholder="Reply here!" required></textarea>
-      <button type='submit' class='btn btn-light '> Reply! </button>
-    </form>
 
 
   </main>

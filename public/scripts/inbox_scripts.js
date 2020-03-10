@@ -11,6 +11,8 @@ const generateButton = (data) => {
 $(document).ready(function(){
 
   $('#reply').hide()
+  $('#submitted').hide()
+
   $.ajax({
     method: "GET",
     url: "/messages"
@@ -36,6 +38,8 @@ $(document).ready(function(){
     local_id = $(this).data().id
     $('#message_display').text(localData[local_id].body)
     $('#reply').show()
+    $('#submitted').hide()
+
   });
 
   $('#reply').on('submit', function(){ //LETS USER REPLY TO MESSAGE
@@ -49,9 +53,9 @@ $(document).ready(function(){
         reciever: localData[local_id].sender,
         item_id: localData[local_id].item_id
        }
-    }).done( function() {
-      $('#reply').children('textarea').val('')
     })
+    $('#reply').children('textarea').val('')
+    $('#submitted').show()
   })
 
 
