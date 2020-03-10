@@ -1,7 +1,9 @@
 <nav class="navbar navbar-expand-lg ">
   <img class="logo rounded" src="images/logo.jpg" />
   <a class="navbar-brand" href="#">Kupit</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+    data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
+    aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -10,20 +12,24 @@
     <form class="my-2 my-lg-0">
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
-          <li id="search-show" class="nav-item mr-sm-3 py-3 px-2" data-toggle="modal" data-target="#modal">
+          <li id="search-show" class="nav-item mr-sm-3 py-3 px-2"
+            data-toggle="modal" data-target="#modal">
             <p class="nav-item__text">Search</p>
           </li>
 
           <% if (user === undefined) { %>
-          <li class="nav-item login mr-sm-3 py-3 px-2 nav-item__text" data-toggle="modal" data-target="#modal">
+          <li class="nav-item login mr-sm-3 py-3 px-2 nav-item__text"
+            data-toggle="modal" data-target="#modal">
             Login
           </li>
 
           <% } else { %>
-          <li id="my-favorites" data-userid="<%= user.id %>" class="nav-item mr-sm-3 py-3 px-2">
+          <li id="my-favorites" data-userid="<%= user.id %>"
+            class="nav-item mr-sm-3 py-3 px-2">
             <p class="nav-item__text">Favorites</p>
           </li>
-          <li id="my-listings" data-userid="<%= user.id %>" class="nav-item  mr-sm-3 py-3 px-2">
+          <li id="my-listings" data-userid="<%= user.id %>"
+            class="nav-item  mr-sm-3 py-3 px-2">
             <p class="nav-item__text">Listings</p>
           </li>
           <li class="nav-item mr-sm-3 py-3 px-2">
