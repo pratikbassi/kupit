@@ -1,15 +1,12 @@
 .navbar {
   background-color: #24292e;
-  color: white;
+  color: #fff;
   height: 90px;
   .logo {
     height: 60px;
     margin-right: 10px;
   }
-  .nav-bar-nav {
-    display: flex;
-    align-items: center;
-  }
+
   .nav-item {
     :after {
       display: block;
@@ -25,6 +22,34 @@
   }
   a {
     color: inherit;
+    display: inline-block;
     text-decoration: none;
+  }
+  p {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  }
+}
+@media (max-width: 992px) {
+  .navbar {
+    .navbar-collapse {
+      margin-top: 5px;
+      z-index: -99;
+      .navbar-nav {
+        &__menu {
+          background-color: #3b3a39;
+          padding-bottom: 5px;
+          float: right;
+        }
+        li {
+          display: flex;
+          justify-content: center;
+          margin: 10px;
+        }
+      }
+    }
   }
 }
