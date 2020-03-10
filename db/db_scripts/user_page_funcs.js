@@ -48,5 +48,9 @@ const user_message = function (message_id) {
   return pool.query(queryString, values).then( res => res.rows[0]).catch(err => err)
 }
 
+const submit_message = function (sender, reciever, body) {
+
+}
+
 
 module.exports = {user_data_search, user_message_list, user_message};

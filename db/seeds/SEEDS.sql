@@ -2,17 +2,17 @@
 INSERT INTO users
   (name, email, phone_number, password)
 VALUES
-  ('alice', 'alice@gmail.com', '111-111-1111', 'password'),
-  ('sam', 'sam@gmail.com', '111-111-1112', 'password'),
-  ('paul', 'paul@gmail.com', '111-111-1113', 'password'),
-  ('greg', 'greg@gmail.com', '111-111-1114', 'password'),
-  ('joe', 'joe@gmail.com', '111-111-1115', 'password'),
-  ('john', 'john@gmail.com', '111-111-1116', 'password'),
-  ('steve', 'steve@gmail.com', '111-111-1117', 'password'),
-  ('emily', 'emily@gmail.com', '111-111-1118', 'password'),
-  ('chris', 'chris@gmail.com', '111-111-1119', 'password'),
-  ('sarah', 'sarah@gmail.com', '111-111-1110', 'password'),
-  ('melanie', 'melanie@gmail.com', '111-111-1101', 'password');
+  ('alice', 'alice@gmail.com', '111-111-1111', '$2b$12$QzbFO3Q74Q2OvbaiCxj2cubFfhPFpfs2maSHbLT.ilKFkh80g6jpS'),
+  ('sam', 'sam@gmail.com', '111-111-1112', '$2b$12$QzbFO3Q74Q2OvbaiCxj2cubFfhPFpfs2maSHbLT.ilKFkh80g6jpS'),
+  ('paul', 'paul@gmail.com', '111-111-1113', '$2b$12$QzbFO3Q74Q2OvbaiCxj2cubFfhPFpfs2maSHbLT.ilKFkh80g6jpS'),
+  ('greg', 'greg@gmail.com', '111-111-1114', '$2b$12$QzbFO3Q74Q2OvbaiCxj2cubFfhPFpfs2maSHbLT.ilKFkh80g6jpS'),
+  ('joe', 'joe@gmail.com', '111-111-1115', '$2b$12$QzbFO3Q74Q2OvbaiCxj2cubFfhPFpfs2maSHbLT.ilKFkh80g6jpS'),
+  ('john', 'john@gmail.com', '111-111-1116', '$2b$12$QzbFO3Q74Q2OvbaiCxj2cubFfhPFpfs2maSHbLT.ilKFkh80g6jpS'),
+  ('steve', 'steve@gmail.com', '111-111-1117', '$2b$12$QzbFO3Q74Q2OvbaiCxj2cubFfhPFpfs2maSHbLT.ilKFkh80g6jpS'),
+  ('emily', 'emily@gmail.com', '111-111-1118', '$2b$12$QzbFO3Q74Q2OvbaiCxj2cubFfhPFpfs2maSHbLT.ilKFkh80g6jpS'),
+  ('chris', 'chris@gmail.com', '111-111-1119', '$2b$12$QzbFO3Q74Q2OvbaiCxj2cubFfhPFpfs2maSHbLT.ilKFkh80g6jpS'),
+  ('sarah', 'sarah@gmail.com', '111-111-1110', '$2b$12$QzbFO3Q74Q2OvbaiCxj2cubFfhPFpfs2maSHbLT.ilKFkh80g6jpS'),
+  ('melanie', 'melanie@gmail.com', '111-111-1101', '$2b$12$QzbFO3Q74Q2OvbaiCxj2cubFfhPFpfs2maSHbLT.ilKFkh80g6jpS');
 
 -- Items table seeds here (Example)
 INSERT INTO items

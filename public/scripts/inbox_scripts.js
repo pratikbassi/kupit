@@ -8,6 +8,7 @@ const generateButton = (data) => {
 
 
 $(document).ready(function(){
+  $('#reply').hide()
   $.ajax({
     method: "GET",
     url: "/messages"
@@ -23,6 +24,8 @@ $(document).ready(function(){
   $('#message_list').on('click','.test' , function() {
     $('#message_display').text('')
     $('#message_display').text(localData[$(this).data().id])
+    $('#reply').show()
+
 
   });
 })

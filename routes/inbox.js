@@ -7,7 +7,7 @@ const {user_data_search, user_message_list, user_message} = require('../db/db_sc
 
 
 const gather_data = async (user_id) => {
-  let user_obj = await user_data_search(1)
+  let user_obj = await user_data_search(user_id)
   let route_arr = []
 
   for (let item in user_obj) {
@@ -15,21 +15,26 @@ const gather_data = async (user_id) => {
   }
 
 
-  return {route_arr, }
+  return route_arr
 }
 
-console.log(gather_data(1))
 
 module.exports = db => {
+
   router.get('/user',  (req, res) => {
-    let user = req.session.userID
-    gather_data(1).then((data) => {
+    let userID = req.session.user.id
+
+    console.log(userID)
+    gather_data(userID).then((data) => {
       console.log(data)
-      res.render('messages', data)
+      user = userID
+      res.render('messages', {data , user})
     })
   })
   router.get('/messages', (req, res) => {
-    user_message_list(1).then((data) => {
+    let userID = req.session.user.id
+
+    user_message_list(userID).then((data) => {
       res.send(data)
     })
   })

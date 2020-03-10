@@ -17,7 +17,7 @@ $(() => {
     const id = escapeTxt(obj.id);
     const is_sold = escapeTxt(obj.is_sold);
     const htmlOutput = `
-    <section id="item-id-${id}" 
+    <section id="item-id-${id}"
       class="container-md container-item ${is_sold ? "is-sold" : ""}">
       <div class="item-img">
         <img class="img-thumbnail rounded" src="${image_url}"/>

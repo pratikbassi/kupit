@@ -17,14 +17,14 @@
       <div class="d-flex container-items">
 
         <div class='container w-48'>
-          <img href= '<%=route_arr[4] %> 'alt='https://i.imgur.com/4GyU6gt.mp4' >
+          <img href= '<%=data[4] %> 'alt='https://i.imgur.com/4GyU6gt.mp4' >
         </div>
 
         <div class="container border">
-          <p>User ID: <%- route_arr[0]%> </p>
-          <p>User Name: <%- route_arr[1]%> </p>
-          <p>User Email: <%- route_arr[2]%> </p>
-          <p>User Phone Number: <%- route_arr[3]%> </p>
+          <p>User ID: <%- data[0]%> </p>
+          <p>User Name: <%- data[1]%> </p>
+          <p>User Email: <%- data[2]%> </p>
+          <p>User Phone Number: <%- data[3]%> </p>
         </div>
       </div>
 
@@ -34,9 +34,15 @@
       </div>
 
     </div>
-    <div id='message_display' class='container p-3'>
+    <div id='message_display' class='container p-3 w-48'>
       Click on a Message to View!
+      <form  id="reply">
+        <textarea placeholder="Reply here!"></textarea>
+        <button> Reply! </button>
+      </form>
+
     </div>
+
 
   </main>
   <%- include('./partials/_footer') %>
