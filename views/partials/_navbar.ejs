@@ -9,7 +9,7 @@
   <nav class="navbar-nav">
     <button id="search-show" type="button" class="nav-item btn btn-primary" data-toggle="modal" data-target="#modal">Search</button>
 
-    <% if (true) { %>
+    <% if (user ===undefined) { %>
     <button
       type="button"
       class="nav-item btn btn-primary login"
@@ -32,7 +32,7 @@
     </button>
 
     <button type="button" class="nav-item btn btn-outline-danger">
-      <a href="">Logout</a>
+      <a href="/api/users/logout">Logout</a>
     </button>
     <% } %>
   </nav>
