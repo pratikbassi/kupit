@@ -22,7 +22,7 @@ $(() => {
         <input type="number" name="max_price" class="form-control" id="searchPrice" placeholder="Search Price">
         <input type="range" min="1" max="100" value="50" class="slider" id="slider-max-price">
       </div>
-      <input type="submit" class="submit btn btn-primary">
+      <input type="submit" class="submit btn btn-primary" data-toggle="modal" data-target="#modal">
     </form>
     `;
     $modalBody.append(htmlOutput);
