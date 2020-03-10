@@ -11,7 +11,7 @@
   grid-template-columns: 15em 1fr;
   grid-template-rows: 10em 5em auto;
   grid-template-areas:
-    "image favourite"
+    "image favorite"
     "image info "
     "title title";
   max-width: 800px;
@@ -27,8 +27,8 @@
       object-fit: cover;
     }
   }
-  .container-favourite {
-    grid-area: favourite;
+  .container-favorite {
+    grid-area: favorite;
     display: inherit;
     justify-items: end;
     > img {
@@ -43,5 +43,9 @@
   }
   .item-title {
     grid-area: title;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-between;
   }
 }

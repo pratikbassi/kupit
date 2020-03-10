@@ -22,8 +22,8 @@ $(() => {
       <div class="item-img">
         <img class="img-thumbnail rounded" src="${image_url}"/>
       </div>
-      <div id="" class="container-favourite">
-        <img class="favourite favourite_on" src="https://toppng.com/public/uploads/preview/heart-emoji-11549911583t6kulc2slx.png">
+      <div id="" class="container-favorite">
+        <img class="favorite favorite_on" src="https://toppng.com/public/uploads/preview/heart-emoji-11549911583t6kulc2slx.png">
       </div>
       <div class="item-info">
         <h5>${stock} in Stock</h5>
@@ -65,5 +65,12 @@ $(() => {
     const $this = $(this);
     const userID = escapeTxt($this.data("userid"));
     loadAjax(`/items/user/${userID}`);
+  });
+
+  $("#my-favorites").on("click", function() {
+    event.preventDefault();
+    const $this = $(this);
+    const userID = escapeTxt($this.data("userid"));
+    loadAjax(`/favorite/${userID}`);
   });
 });

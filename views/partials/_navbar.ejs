@@ -15,12 +15,8 @@
 
     <% } else { %>
 
-    <button type="button" class="nav-item btn btn-primary">
-      <a href="/favorite/<%= user.id %> ">Favourites</a>
-    </button>
-    <button id="my-listings" data-userid="<%= user.id %>" type="button" class="nav-item btn btn-primary">
-      My Listings
-    </button>
+    <button id="my-favorites" data-userid="<%= user.id %>" type="button" class="nav-item btn btn-primary">Favorites</button>
+    <button id="my-listings" data-userid="<%= user.id %>" type="button" class="nav-item btn btn-primary">My Listings</button>
     <button type="button" class="nav-item btn btn-primary">
       <a href="/user">My Messages</a>
     </button>

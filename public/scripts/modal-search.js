@@ -14,12 +14,12 @@ $(() => {
       </div>
       <div class="min-price form-group">
         <label for="min_price">Min Price</label>
-        <input type="number" name="min_price" class="form-control" id="searchPrice" placeholder="Search Price">
+        <input type="number" name="min_price" class="form-control" id="searchPrice" placeholder="Min Price">
         <input type="range" min="1" max="100" value="50" class="slider" id="slider-min-price">
       </div>
       <div class="max-price form-group">
         <label for="max_price">Max Price</label>
-        <input type="number" name="max_price" class="form-control" id="searchPrice" placeholder="Search Price">
+        <input type="number" name="max_price" class="form-control" id="searchPrice" placeholder="Max Price">
         <input type="range" min="1" max="100" value="50" class="slider" id="slider-max-price">
       </div>
       <input type="submit" class="submit btn btn-primary" data-toggle="modal" data-target="#modal">
