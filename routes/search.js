@@ -4,7 +4,7 @@ const generalSearch = require("../db/db_scripts/search_function");
 
 module.exports = db => {
   router.get("/search", (req, res) => {
-    if (req.query.keyword && req.query.min_price && req.query.max_price) {
+    if (req.query.keyword) {
       generalSearch(db, req.query).then(items => {
         if (!items) {
           res.send({ error: "Something wrong happens" });
@@ -14,7 +14,7 @@ module.exports = db => {
         }
       });
     } else {
-      res.json({ error: "Search entities can't be empty." });
+      res.json({ error: "Keyword can't be empty." });
     }
   });
   return router;
