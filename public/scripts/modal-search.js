@@ -7,7 +7,7 @@ $(() => {
     <header>
       <h2>Search</h2>
     </header>
-    <form id="search-form" action="/search" method="GET">
+    <form id="search-form" action="/" method="GET">
       <div class="keyword form-group">
         <label for="keyword">Keyword</label>
         <input type="text" name="keyword" class="form-control" id="searchKeyword" placeholder="Search Keyword">

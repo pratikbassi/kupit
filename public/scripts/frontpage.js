@@ -9,6 +9,7 @@ $(() => {
     return div.innerHTML;
   };
 
+  // generates HTML for items used in frontpage, favorites list, my listings
   const generateItemHTML = obj => {
     const image_url = escapeTxt(obj.image_url);
     const title = escapeTxt(obj.title);
@@ -52,7 +53,6 @@ $(() => {
       }
     });
   };
-  loadAjax("/featured");
 
   $modal.on("submit", "#search-form", function(event) {
     event.preventDefault();
@@ -60,18 +60,27 @@ $(() => {
     loadAjax("/search", $this.serialize());
   });
 
-  $("#my-listings").on("click", function() {
+  $("#my-listings").on("click", function(event) {
     event.preventDefault();
     const $this = $(this);
     const userID = escapeTxt($this.data("userid"));
-    console.log(userID);
     loadAjax(`/items/user/${userID}`);
   });
 
-  $("#my-favorites").on("click", function() {
+  $("#my-favorites").on("click", function(event) {
     event.preventDefault();
-    const $this = $(this);
-    const userID = escapeTxt($this.data("userid"));
     loadAjax(`/favorite`);
   });
+
+  console.log(window.location.hash, window.location.search);
+  if (!window.location.hash && !window.location.search) {
+    loadAjax("/featured");
+  } else if (window.location.hash === "#my-favorite") {
+    loadAjax(`/favorite`);
+  } else if (window.location.hash === "#my-listings") {
+    $("#my-listings").trigger("click");
+  } else if (window.location.search) {
+    console.log(window.location.search);
+    loadAjax("/search", window.location.search.slice(1));
+  }
 });
