@@ -8,12 +8,19 @@
 
 .container-item {
   display: grid;
-  grid-template-columns: 15em 1fr;
-  grid-template-rows: 10em 5em auto;
+  // grid-template-columns: 15em 1fr;
+  // grid-template-rows: 10em 5em auto;
+  // grid-template-areas:
+  //   "image favorite"
+  //   "image info "
+  //   "title title";
+  grid-template-columns: auto auto;
+  grid-template-rows: 15em auto auto auto;
   grid-template-areas:
-    "image favorite"
-    "image info "
-    "title title";
+    "image image"
+    "info favorite"
+    "title title"
+    "button button";
   max-width: 800px;
   border: $color-primary-3 solid medium;
   padding: 0.5em;
@@ -22,15 +29,12 @@
     width: 100%;
     max-height: 15em;
     overflow: hidden;
-    img {
-      width: 100%;
-      object-fit: cover;
-    }
+    width: 100%;
+    object-fit: cover;
   }
-  .container-favorite {
+  .item-favorite {
     grid-area: favorite;
-    display: inherit;
-    justify-items: end;
+    justify-self: end;
     > img {
       height: 2em;
       width: 2em;
@@ -38,14 +42,11 @@
   }
   .item-info {
     grid-area: info;
-    display: inherit;
-    align-content: end;
   }
   .item-title {
     grid-area: title;
-    display: flex;
-    flex-direction: column;
-    align-content: space-between;
-    justify-content: space-between;
+  }
+  .item-btn {
+    grid-area: button;
   }
 }
