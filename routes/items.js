@@ -26,8 +26,7 @@ module.exports = db => {
   router.get("/items/:itemId", (req, res) => {
     getItemWithId(db, req.params.itemId)
       .then(item => {
-        res.send(item[0]);
-        //res.render("item", item[0]);
+        res.json({ item: item[0], user: req.session.user });
       })
       .catch(e => res.send(e));
   });

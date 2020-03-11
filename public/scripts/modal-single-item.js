@@ -5,8 +5,9 @@ $(() => {
     return div.innerHTML;
   };
 
-  const generateSingleItemHTML = obj => {
+  const generateSingleItemHTML = (obj, user) => {
     const id = escapeTxt(obj.id);
+    const ownerId = escapeTxt(obj.user_id);
     const image_url = escapeTxt(obj.image_url);
     const title = escapeTxt(obj.title);
     const stock = escapeTxt(obj.stock);
@@ -33,17 +34,23 @@ $(() => {
           <p>${description}</p>
         </article>
       </div>
-      <div class="admin-tools">
-        <button>admin</button>
-        <button data-itemid="${id}" class="remove ${id}">Remove</button>
-        <button data-itemid="${id}" class="mark-sold ${id}">Sold</button>
-      </div>
+      ${
+        user.id == ownerId
+          ? `      <div class="admin-tools">
+      <button>admin</button>
+      <button data-itemid="${id}" class="remove ${id}">Remove</button>
+      <button data-itemid="${id}" class="mark-sold ${id}">Sold</button>
+    </div>`
+          : `<div></div>`
+      }
+
     </main>
     `;
     return htmlOutput;
   };
 
   const $modalBody = $("#modalBody");
+
   $(".container-items").on("click", ".modal-show", function() {
     event.preventDefault();
     const $this = $(this);
@@ -52,13 +59,13 @@ $(() => {
       method: "GET",
       url: `/items/${$this.data("itemid")}`
     })
-      .done(items => {
-        $modalBody.append(generateSingleItemHTML(items));
+      .done(res => {
+        $modalBody.append(generateSingleItemHTML(res.item, res.user));
       })
-      .then(function(item) {
+      .then(function(res) {
         $.ajax({
           method: "GET",
-          url: `/favorite/${item.id}`
+          url: `/favorite/${res.item.id}`
         }).done(item => {
           if (item.length) {
             $(`#fav-item-id-${item[0].id}`).text("favorite");
