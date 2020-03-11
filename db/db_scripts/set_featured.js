@@ -8,12 +8,6 @@ const pool = new Pool({
 });
 
 const set_featured = function() {
-  // let queryString = `SELECT COUNT(*) FROM items WHERE is_viewable = true`;
-
-  // pool.query(queryString);
-
-  // pool.query(`UPDATE items SET is_featured = false`);
-  // pool.query(`UPDATE items SET is_featured = true WHERE id IN $1`);
   function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
