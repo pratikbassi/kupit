@@ -19,7 +19,7 @@ $(() => {
       const stock = escapeTxt(items.stock);
       const city = escapeTxt(items.city);
       const description = escapeTxt(items.description);
-      console.log(image_url, title, stock, city, description);
+      console.log(items);
 
       const htmlOutput = `
       <main class="container single-item">
@@ -43,6 +43,8 @@ $(() => {
         </div>
         <div class="admin-tools">
           <button>admin</button>
+          <button class="remove ${$this.data("itemid")}">Remove</button>
+          <button class="mark-sold ${$this.data("itemid")}">Sold</button>
         </div>
       </main>
       `;
