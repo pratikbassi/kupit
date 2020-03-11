@@ -62,8 +62,8 @@ const addItem = function(db, item) {
   return db
     .query(
       `
-INSERT INTO items(user_id,price,description,title,stock,city)
-VALUES($1,$2,$3,$4,$5,$6)
+INSERT INTO items(user_id,price,description,title,stock,city,image_url)
+VALUES($1,$2,$3,$4,$5,$6,$7)
 RETURNING *;
 `,
       [
@@ -72,7 +72,8 @@ RETURNING *;
         item.description,
         item.title,
         item.stock,
-        item.city
+        item.city,
+        item.image_url
       ]
     )
     .then(res => {

@@ -29,7 +29,7 @@ $(() => {
         <h6>Located: ${city}</h6>
       </div>
       <h5 class="item-title">${title}</h5>
-      <button id="neat" data-itemId="${id}" type="button"
+      <button data-itemId="${id}" type="button"
         class="modal-show item-btn btn btn-primary" data-toggle="modal"
         data-target="#modal">
         View more info
