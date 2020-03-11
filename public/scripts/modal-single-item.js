@@ -24,8 +24,11 @@ $(() => {
         <h5>Located: ${city}</h5>
         
       </div>
+
       <div class="message">
-        <button class="btn btn-outline-info">message</button>
+        <button class="btn btn-outline-info"       ${
+          obj.is_sold ? `disabled` : ``
+        }>message</button>
         <i id="fav-item-id-${id}" data-itemid="${id}" class="material-icons favorite-icon">favorite_border</i>
 
       </div>
