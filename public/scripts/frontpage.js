@@ -39,6 +39,12 @@ $(() => {
     return htmlOutput;
   };
 
+  const generateError = err => {
+    const errorMsg = escapeTxt(err.error);
+    const errorOutput = `<div class="alert alert-danger" role="alert">${errorMsg}</div>`;
+    return errorOutput;
+  };
+
   const loadAjax = (url, params) => {
     $.ajax({
       method: "GET",
@@ -46,8 +52,15 @@ $(() => {
       data: params
     }).done(items => {
       $containerItems.empty();
-      for (const obj of items) {
-        $containerItems.prepend(generateItemHTML(obj));
+      if (items.error) {
+        $containerItems.prepend(generateError(items));
+        setTimeout(function() {
+          $containerItems.empty();
+        }, 5000);
+      } else {
+        for (const obj of items) {
+          $containerItems.prepend(generateItemHTML(obj));
+        }
       }
     });
   };

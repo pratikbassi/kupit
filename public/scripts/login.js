@@ -37,7 +37,7 @@ $(() => {
       id="login-password"
     />
   </div>
-  <button type="submit" class="btn btn-primary">Login</button>
+  <button type="submit" class="btn btn-dark">Login</button>
   </form>
 
   <form method="POST" action="/api/users/register" id="register" class="register tab-pane fade">
@@ -83,7 +83,7 @@ $(() => {
     name="name"
   />
   </div>
-  <button type="submit" class="btn btn-primary">
+  <button type="submit" class="btn btn-dark">
     Register
   </button>
 </form></div>

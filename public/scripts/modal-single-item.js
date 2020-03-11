@@ -37,9 +37,8 @@ $(() => {
       ${
         user.id == ownerId
           ? `      <div class="admin-tools">
-      <button>admin</button>
-      <button data-itemid="${id}" class="remove ${id}">Remove</button>
-      <button data-itemid="${id}" class="mark-sold ${id}">Sold</button>
+      <button class="btn btn-danger" data-itemid="${id}" class="remove ${id}">Remove</button>
+      <button class="btn btn-warning" data-itemid="${id}" class="mark-sold ${id}">Mark Sold</button>
     </div>`
           : `<div></div>`
       }
