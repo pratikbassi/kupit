@@ -19,8 +19,6 @@ $(() => {
       </div>
       <div class="max-price form-group">
         <label for="max_price">Max Price</label>
-        <input type="number" name="max_price" class="form-control" id="searchPrice" placeholder="Max Price">
-        <input type="range" min="1" max="100" value="50" class="slider" id="slider-max-price">
       </div>
       <input type="submit" class="submit btn btn-primary" data-toggle="modal" data-target="#modal">
     </form>

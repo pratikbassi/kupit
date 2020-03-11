@@ -1,9 +1,15 @@
 <nav class="navbar navbar-expand-lg">
   <img class="logo rounded" src="images/logo.jpg" />
   <a class="navbar-brand" href="/">Kupit</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse"
-    data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
-    aria-expanded="false" aria-label="Toggle navigation">
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarTogglerDemo02"
+    aria-controls="navbarTogglerDemo02"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -11,24 +17,46 @@
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
 
     <ul class="navbar-nav navbar-nav__menu my-2 my-lg-0">
-      <li id="search-show" class="nav-item mr-lg-3 mt-lg-1 py-lg-3 px-lg-2"
-        data-toggle="modal" data-target="#modal">
+      <li
+        id="search-show"
+        class="nav-item mr-lg-3 mt-lg-1 py-lg-3 px-lg-2"
+        data-toggle="modal"
+        data-target="#modal"
+      >
         <p class="nav-item__text">Search</p>
       </li>
 
       <% if (user === undefined) { %>
-      <li class="nav-item login mr-lg-3 mt-lg-1 py-lg-3 px-lg-2 "
-        data-toggle="modal" data-target="#modal">
+      <li
+        class="nav-item login mr-lg-3 mt-lg-1 py-lg-3 px-lg-2 "
+        data-toggle="modal"
+        data-target="#modal"
+      >
         <p class="nav-item__text">Login</p>
       </li>
 
       <% } else { %>
-      <li id="my-favorites" data-userid="<%= user.id %>"
-        class="nav-item mr-lg-3 mt-lg-1 py-lg-3 px-lg-2">
+      <li
+        id="item-new"
+        data-userid="<%= user.id %>"
+        data-toggle="modal"
+        data-target="#modal"
+        class="nav-item mr-lg-3 mt-lg-1 py-lg-3 px-lg-2"
+      >
+        <a href="/#iten-new" class="nav-item__text">New</a>
+      </li>
+      <li
+        id="my-favorites"
+        data-userid="<%= user.id %>"
+        class="nav-item mr-lg-3 mt-lg-1 py-lg-3 px-lg-2"
+      >
         <a href="/#my-favorite" class="nav-item__text">Favorites</a>
       </li>
-      <li id="my-listings" data-userid="<%= user.id %>"
-        class="nav-item  mr-lg-3 mt-lg-1 py-lg-3 px-lg-2">
+      <li
+        id="my-listings"
+        data-userid="<%= user.id %>"
+        class="nav-item  mr-lg-3 mt-lg-1 py-lg-3 px-lg-2"
+      >
         <a href="/#my-listings" class="nav-item__text">Listings</a>
       </li>
       <li class="nav-item mr-lg-3 mt-lg-1 py-lg-3 px-lg-2">
