@@ -44,4 +44,4 @@ const set_featured = function() {
     .catch(err => err);
 };
 
-set_featured();
+module.exports = { set_featured };

@@ -3,7 +3,9 @@ const getItemWithId = function(db, id) {
     .query(
       `
   SELECT * FROM items
-  WHERE id = $1
+  WHERE is_viewable = true
+  AND id = $1
+
   `,
       [id]
     )
@@ -22,7 +24,8 @@ const getItemsWithUserId = function(db, userId) {
     .query(
       `
 SELECT * FROM items
-WHERE user_id = $1
+WHERE is_viewable = true
+AND user_id = $1
 `,
       [userId]
     )
@@ -41,7 +44,8 @@ const getFeaturedItems = function(db) {
     .query(
       `
   SELECT * FROM items
-  WHERE is_featured = true
+  WHERE is_viewable = true
+  AND is_featured = true
   `
     )
     .then(res => {
