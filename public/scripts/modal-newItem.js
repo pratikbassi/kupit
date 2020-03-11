@@ -64,11 +64,11 @@ $(() => {
   };
 
   const $modalBody = $("#modalBody");
-  $("#item-new").on("click", () => {
+  $("#item-new-btn").on("click", () => {
     event.preventDefault();
     $modalBody.empty();
     const newItemhtml = `
-  <form method="POST" action="" class="newItem">
+  <form id="new-item-form" method="POST" action="" class="newItem">
   <h2>Post New Item</h2>
   <hr />
   <div class="form-row">
@@ -102,14 +102,16 @@ $(() => {
   <label for="inputUrl">Image URL</label>
   <input type="text" class="form-control" id="inputUrl" name="image_url">
   </div>
-  <button type="submit" class="btn btn-dark post-newItem" data-toggle="modal" data-target="#modal">Post</button>
+  <button type="submit" class="btn btn-dark" data-toggle="modal" data-target="#modal">Post</button>
 </form>
     `;
     $modalBody.append(newItemhtml);
   });
 
-  $(".modal-body").submit(".newItem > .post-newItem", function() {
+  $(".modal-body").on("submit", "#new-item-form", function() {
     event.preventDefault();
+    console.log("new item post");
+
     PostAjax("/item/new", $(".newItem").serialize());
   });
 });
