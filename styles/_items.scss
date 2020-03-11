@@ -15,7 +15,7 @@
   //   "image info "
   //   "title title";
   grid-template-columns: auto auto;
-  grid-template-rows: 15em auto auto auto;
+  grid-template-rows: 15em auto auto 2.5em;
   grid-template-areas:
     "image image"
     "info favorite"
