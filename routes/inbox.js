@@ -4,6 +4,13 @@ const router = express.Router();
 const checkLogin = require("./middlewares/checkLogin");
 const {user_data_search, user_message_list, user_message, submit_message} = require('../db/db_scripts/user_page_funcs')
 
+const accountSid = 'ACff4f7bd672c830fb4a06ac09966eaed8';
+const authToken = 'f4aa86134b0cc1b8c0b533263eeedaa3';
+const client = require('twilio')(accountSid, authToken);
+
+
+
+
 
 
 const gather_data = async (user_id) => {
@@ -21,27 +28,42 @@ const gather_data = async (user_id) => {
 
 module.exports = db => {
 
-  router.get('/user',  (req, res) => {
+  router.get('/user', checkLogin ,(req, res) => {
     let userID = req.session.user.id
 
-    console.log(userID)
     gather_data(userID).then((data) => {
-      console.log(data)
       user = userID
       res.render('messages', {data , user})
     })
   })
-  router.get('/messages', (req, res) => {
+  router.get('/messages', checkLogin , (req, res) => {
     let userID = req.session.user.id
 
     user_message_list(userID).then((data) => {
       res.send(data)
     })
   })
-  router.post('/messages', (req, res) => {
-    console.log(req.body)
+  router.post('/messages', checkLogin ,(req, res) => {
+    let userID = req.session.user.id
+    let recipient = 0;
+    if (parseFloat(userID) === parseFloat(req.body.sender)) {
+      recipient = req.body.reciever
+    }
+    else {
+      recipient = req.body.sender
+    }
+
     submit_message(parseFloat(req.body.sender), parseFloat(req.body.reciever), req.body.text, parseFloat(req.body.item_id))
-    .then(data => res.send(201))
+    .then((data) => {return user_data_search(recipient)})
+    .then(data => {
+      client.messages
+      .create({
+        body: `${req.body.text}`,
+        from: '+13346506231',
+        to: `${data.phone_number.replace(/\-/g, '')}`
+      }).then(message => console.log(message.sid))
+    })
+    .then(data => res.sendStatus(201))
     .catch(err => err)
   })
 
@@ -53,3 +75,6 @@ module.exports = db => {
   return router;
 
   }
+
+
+

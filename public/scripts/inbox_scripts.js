@@ -33,7 +33,16 @@ $(document).ready(function(){
 
   });
 
+  if ($('#user_id'))
+
   $('#message_list').on('click','.test' , function() { //LETS USER VIEW MESSAGE
+    $('#message_display').text('')
+    local_id = $(this).data().id
+    $('#message_display').text(localData[local_id].body)
+    $('#reply').show()
+    $('#submitted').hide()
+  });
+  $('#message_outbox').on('click','.test' , function() { //LETS USER VIEW MESSAGE
     $('#message_display').text('')
     local_id = $(this).data().id
     $('#message_display').text(localData[local_id].body)
