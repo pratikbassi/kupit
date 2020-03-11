@@ -5,6 +5,31 @@ $(() => {
     return div.innerHTML;
   };
 
+  const convertTime = mtime => {
+    let currentTime = Date.now();
+    let sub = currentTime - Date.parse(mtime);
+    let time = sub / 1000;
+    if (time < 3600) {
+      let min = Math.floor(time / 60);
+      return `${min} ${min === 1 ? "min" : "mins"} ago`;
+    } else if (time < 86400) {
+      let hour = Math.floor(time / 3600);
+      return `${hour} ${hour === 1 ? "hour" : "hours"} ago`;
+    } else if (time < 604800) {
+      let day = Math.floor(time / 86400);
+      return `${day} ${day === 1 ? "day" : "days"} ago`;
+    } else if (time < 2629743) {
+      let week = Math.floor(time / 604800);
+      return `${week} ${week === 1 ? "week" : "weeks"} ago`;
+    } else if (time < 31556926) {
+      let month = Math.floor(time / 2629743);
+      return `${month} ${month === 1 ? "month" : "months"} ago`;
+    } else {
+      let year = Math.floor(time / 31556926);
+      return `${year} ${year === 1 ? "year" : "years"} ago`;
+    }
+  };
+
   const generateSingleItemHTML = (obj, user) => {
     const id = escapeTxt(obj.id);
     const ownerId = escapeTxt(obj.user_id);
@@ -16,36 +41,58 @@ $(() => {
     const htmlOutput = `
     <main class="container single-item">
       <div class="image">
-        <img src="${image_url}">
-      </div>
-      <div class="title">
-        <h2>${title}</h2>
-        <h4>${stock} In Stock</h4>
-        <h5>Located: ${city}</h5>
+      ${
+        obj.is_sold
+          ? `<img src="https://toppng.com/uploads/preview/sold-png-11553997926suvwzyklcq.png">`
+          : `<img src="${image_url}">`
+      }
         
       </div>
 
+      <div class="item-info">
+      <div class="title">
+        <h2><b>${title}</b></h2>
+        <hr/>
+        <p class="item-price">$${obj.price}</p>
+        <p class="list-info"><i>Listed ${convertTime(
+          obj.posting_date
+        )} in ${city}</i></p>
+        <p>In Stock:<b> ${stock}</b> </p>
+      </div>
+
       <div class="message">
-        <button class="btn btn-outline-info"       ${
-          obj.is_sold ? `disabled` : ``
-        }>message</button>
+      <div class="icons">
+      <i class="material-icons chat-icon" ${
+        obj.is_sold ? `disabled` : ``
+      }>chat_bubble_outline</i>
+      <p>Message</p>
+      </div>
+      <div class="icons">
         <i id="fav-item-id-${id}" data-itemid="${id}" class="material-icons favorite-icon">favorite_border</i>
-
+        <p>Favorite</p>
+        </div>
+        ${
+          user.id == ownerId
+            ? `     
+            <div class="icons">
+        <i id="admin-remove" class="material-icons delete-icon" data-itemid="${id}" class="remove ${id}">delete_outline</i>
+        <p>Remove</p>
+        </div>
+        <div class="icons">
+        <i id="admin-sold" class="material-icons done-icon" data-itemid="${id}" class="mark-sold ${id}">done_outline</i>
+        <p>Mark Sold</p>
+        </div>
+      `
+            : `<div></div>`
+        }
       </div>
+
       <div class="description">
-        <article>
-          <p>${description}</p>
-        </article>
-      </div>
-      ${
-        user.id == ownerId
-          ? `      <div class="admin-tools">
-      <button id="admin-remove" class="btn btn-danger" data-itemid="${id}" class="remove ${id}">Remove</button>
-      <button id="admin-sold" class="btn btn-warning" data-itemid="${id}" class="mark-sold ${id}">Mark Sold</button>
-    </div>`
-          : `<div></div>`
-      }
-
+      <article>
+        <p>${description}</p>
+      </article>
+    </div>
+</div>
     </main>
     `;
     return htmlOutput;
@@ -61,6 +108,7 @@ $(() => {
       url: `/items/${$this.data("itemid")}`
     })
       .done(res => {
+        console.log(res.item);
         $modalBody.append(generateSingleItemHTML(res.item, res.user));
       })
       .then(function(res) {
@@ -90,5 +138,9 @@ $(() => {
         $this.text("favorite_border");
       });
     }
+  });
+
+  $modalBody.on("click", ".chat-icon", function() {
+    console.log("chat");
   });
 });
