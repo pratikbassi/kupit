@@ -1,14 +1,29 @@
-const fetchFavItems = function(db, userId) {
-  return db
-    .query(`SELECT item_id,date FROM favorites WHERE user_id=$1`, [userId])
-    .then(res => {
-      const favorites = res.rows;
-      if (favorites) {
-        return Promise.resolve(favorites);
-      } else {
-        return Promise.resolve(null);
-      }
-    });
+const fetchFavItems = function(db, userId, itemId = null) {
+  let queryString = `
+  SELECT items.*, favorites.id AS fav_id, favorites.date AS fav_date
+  FROM items
+  LEFT JOIN favorites ON items.id = favorites.item_id
+  WHERE favorites.user_id = $1
+  `;
+  let values = [userId];
+  if (itemId) {
+    queryString += `
+    AND item_id = $2
+    ORDER BY favorites.date
+    LIMIT 1`;
+    values.push(itemId);
+  } else {
+    queryString += `ORDER BY favorites.date`;
+  }
+
+  return db.query(queryString, values).then(res => {
+    const favorites = res.rows;
+    if (favorites) {
+      return Promise.resolve(favorites);
+    } else {
+      return Promise.resolve(null);
+    }
+  });
 };
 
 const favItem = function(db, userId, itemId) {
