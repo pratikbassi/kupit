@@ -56,16 +56,20 @@ module.exports = db => {
 
   //List a new item
   router.post("/item/new", checkLogin, (req, res) => {
-    const newItem = req.body;
-    newItem.user_id = req.session.user.id;
-    addItem(db, newItem).then(item => {
-      if (!item) {
-        res.send({ error: "Something wrong happens" });
-        return;
-      } else {
-        res.redirect("/");
-      }
-    });
+    if (req.body.price && req.body.title) {
+      const newItem = req.body;
+      newItem.user_id = req.session.user.id;
+      addItem(db, newItem).then(item => {
+        if (!item) {
+          res.send({ error: "Something wrong happens" });
+          return;
+        } else {
+          res.json(item);
+        }
+      });
+    } else {
+      res.json({ error: "Price and title can't be empty" });
+    }
   });
 
   //Mark sold with Id
