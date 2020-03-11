@@ -1,4 +1,5 @@
 $(() => {
+  // $(".admin-tools").on()
   $(".modal-body").on(
     "click",
     ".single-item > .admin-tools > .remove",
