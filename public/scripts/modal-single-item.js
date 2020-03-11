@@ -14,7 +14,7 @@ $(() => {
     const city = escapeTxt(obj.city);
     const description = escapeTxt(obj.description);
     const htmlOutput = `
-    <main class="container single-item ${obj.is_sold ? "is-sold" : ""}">
+    <main class="container single-item">
       <div class="image">
         <img src="${image_url}">
       </div>
@@ -24,8 +24,11 @@ $(() => {
         <h5>Located: ${city}</h5>
         
       </div>
+
       <div class="message">
-        <button>message</button>
+        <button class="btn btn-outline-info"       ${
+          obj.is_sold ? `disabled` : ``
+        }>message</button>
         <i id="fav-item-id-${id}" data-itemid="${id}" class="material-icons favorite-icon">favorite_border</i>
 
       </div>
