@@ -26,7 +26,7 @@ $(() => {
       </div>
       <div class="message">
         <button>message</button>
-        <i id="fav-item-id-${id}" data-itemid="${id}" class="material-icons">favorite_border</i>
+        <i id="fav-item-id-${id}" data-itemid="${id}" class="material-icons favorite-icon">favorite_border</i>
 
       </div>
       <div class="description">
@@ -50,7 +50,6 @@ $(() => {
   };
 
   const $modalBody = $("#modalBody");
-
   $(".container-items").on("click", ".modal-show", function() {
     event.preventDefault();
     const $this = $(this);
@@ -72,5 +71,22 @@ $(() => {
           }
         });
       });
+  });
+
+  $modalBody.on("click", ".favorite-icon", function() {
+    event.preventDefault();
+    const $this = $(this);
+    if ($this.text() === "favorite_border") {
+      $.post(`favorite/${$this.data("itemid")}`).done(function() {
+        $this.text("favorite");
+      });
+    } else {
+      $.ajax({
+        method: "DELETE",
+        url: `favorite/${$this.data("itemid")}`
+      }).done(function() {
+        $this.text("favorite_border");
+      });
+    }
   });
 });

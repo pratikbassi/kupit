@@ -1,12 +1,14 @@
-DROP TABLE IF EXISTS items CASCADE;
+DROP TABLE IF EXISTS items
+CASCADE;
 
-CREATE TABLE items (
+CREATE TABLE items
+(
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   is_sold BOOLEAN DEFAULT FALSE,
   is_featured BOOLEAN DEFAULT FALSE,
   price INTEGER NOT NULL,
-  image_url VARCHAR(255) DEFAULT 'https://i.redd.it/3k7uvh8rz5k41.jpg',
+  image_url VARCHAR(255) DEFAULT 'https://i.redd.it/08qfucfa5xl41.jpg',
   description TEXT DEFAULT '',
   title VARCHAR(255) NOT NULL,
   posting_date TIMESTAMP DEFAULT NOW() ,
