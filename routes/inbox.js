@@ -3,10 +3,9 @@ const router = express.Router();
 //const checkAdmin = require("./middlewares/checkAdmin");
 const checkLogin = require("./middlewares/checkLogin");
 const {user_data_search, user_message_list, user_message, submit_message} = require('../db/db_scripts/user_page_funcs')
+const dbParams = require("../lib/db.js");
 
-const accountSid = 'ACff4f7bd672c830fb4a06ac09966eaed8';
-const authToken = 'f4aa86134b0cc1b8c0b533263eeedaa3';
-const client = require('twilio')(accountSid, authToken);
+const client = require('twilio')(dbParams.accountSid, dbParams.authToken);
 
 
 
