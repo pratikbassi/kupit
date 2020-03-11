@@ -78,7 +78,7 @@ module.exports = db => {
             res.send({ error: "Something wrong happens" });
             return;
           } else {
-            res.redirect("/");
+            res.json(item);
           }
         });
       } else {
@@ -96,7 +96,7 @@ module.exports = db => {
             res.send({ error: "Something wrong happens" });
             return;
           } else {
-            res.redirect("/");
+            res.json(item);
           }
         });
       } else {
