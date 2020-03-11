@@ -6,9 +6,10 @@ const {user_data_search, user_message_list, user_message, submit_message} = requ
 const dbParams = require("../lib/db.js");
 
 const client = require('twilio')(dbParams.accountSid, dbParams.authToken);
+const DOMAIN = 'sandbox9929a9ef0bcf4d75b0f3a2a7a04dccbe.mailgun.org';
 
-
-
+const mailgun = require("mailgun-js")({apiKey: dbParams.mailgunAPI, domain: DOMAIN});
+const mg = mailgun;
 
 
 
@@ -54,13 +55,28 @@ module.exports = db => {
 
     submit_message(parseFloat(req.body.sender), parseFloat(req.body.reciever), req.body.text, parseFloat(req.body.item_id))
     .then((data) => {return user_data_search(recipient)})
-    .then(data => {
+    .then(data2 => {
+
+      let data = {
+        from: `${userID}@sandbox9929a9ef0bcf4d75b0f3a2a7a04dccbe.mailgun.org`,
+        to: `${data2.email}`,
+        subject: `You got a message on Kupit!`,
+        text: `Respond to this message on Kupit! \n
+        \n
+        ${req.body.text}`
+      };
+      mg.messages().send(data, function (error, body) { //sends an email
+        console.log(data);
+        console.log(body);
+      });
+
+
       client.messages
-      .create({
+      .create({ //sends a text
         body: `${req.body.text}`,
         from: '+13346506231',
-        to: `${data.phone_number.replace(/\-/g, '')}`
-      }).then(message => console.log(message.sid))
+        to: `${data2.phone_number.replace(/\-/g, '')}`
+      }).then(message => console.log(message, 'message'))
     })
     .then(data => res.sendStatus(201))
     .catch(err => err)
