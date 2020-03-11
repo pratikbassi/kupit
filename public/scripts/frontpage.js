@@ -60,7 +60,6 @@ $(() => {
       url: url,
       data: params
     }).done(items => {
-      console.log(items);
       $containerItems.empty();
       if (items.error) {
         $containerItems.prepend(generateError(items));
@@ -69,7 +68,6 @@ $(() => {
         }, 5000);
       } else {
         for (const obj of items) {
-          console.log(obj.is_sold);
           $containerItems.prepend(generateItemHTML(obj));
         }
       }
