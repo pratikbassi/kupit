@@ -64,6 +64,7 @@ $(() => {
     event.preventDefault();
     const $this = $(this);
     const userID = escapeTxt($this.data("userid"));
+    console.log(userID);
     loadAjax(`/items/user/${userID}`);
   });
 

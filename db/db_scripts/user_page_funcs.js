@@ -43,8 +43,6 @@ const user_message = function (message_id) {
   FROM messages
   WHERE messages.id = $1;
 `
-  console.log('reached');
-
   return pool.query(queryString, values).then( res => res.rows[0]).catch(err => err)
 }
 
@@ -55,7 +53,7 @@ const submit_message = function (sender, reciever, body, item_id) {
   VALUES ($1, $2, $3, $4)
   RETURNING * ;
   `
-  return pool.query(queryString, values).then(res => res.rows[0].catch(err => err))
+  return pool.query(queryString, values).then(res => res.rows[0]).catch(err => err)
 }
 
 

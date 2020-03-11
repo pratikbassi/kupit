@@ -2,7 +2,7 @@
 INSERT INTO users
   (name, email, phone_number, password)
 VALUES
-  ('alice', 'alice@gmail.com', '111-111-1111', '$2b$12$QzbFO3Q74Q2OvbaiCxj2cubFfhPFpfs2maSHbLT.ilKFkh80g6jpS'),
+  ('alice', 'alice@gmail.com', '1-604-440-5472', '$2b$12$QzbFO3Q74Q2OvbaiCxj2cubFfhPFpfs2maSHbLT.ilKFkh80g6jpS'),
   ('sam', 'sam@gmail.com', '111-111-1112', '$2b$12$QzbFO3Q74Q2OvbaiCxj2cubFfhPFpfs2maSHbLT.ilKFkh80g6jpS'),
   ('paul', 'paul@gmail.com', '111-111-1113', '$2b$12$QzbFO3Q74Q2OvbaiCxj2cubFfhPFpfs2maSHbLT.ilKFkh80g6jpS'),
   ('greg', 'greg@gmail.com', '111-111-1114', '$2b$12$QzbFO3Q74Q2OvbaiCxj2cubFfhPFpfs2maSHbLT.ilKFkh80g6jpS'),
