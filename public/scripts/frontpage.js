@@ -16,12 +16,16 @@ $(() => {
     const stock = escapeTxt(obj.stock);
     const city = escapeTxt(obj.city);
     const id = escapeTxt(obj.id);
-    const is_sold = escapeTxt(obj.is_sold);
     const htmlOutput = `
     <section id="item-id-${id}"
-      class="container-md container-item ${is_sold ? "is-sold" : ""}">
+      class="container-md container-item ${obj.is_sold ? "is-sold" : ""}">
       <div class="item-img">
-        <img class="img-thumbnail rounded" src="${image_url}"/>
+      ${
+        obj.is_sold
+          ? `<img class="img-thumbnail rounded" src="https://toppng.com/uploads/preview/sold-png-11553997926suvwzyklcq.png"/>`
+          : `<img class="img-thumbnail rounded" src="${image_url}"/>`
+      }
+        
       </div>
       <div id="" class="container-favorite">
         
@@ -32,7 +36,7 @@ $(() => {
       </div>
       <div class="item-title">
         <h5>${title}</h5>
-        <button id="neat" data-itemId="${id}" type="button" class="modal-show btn btn-primary" data-toggle="modal" data-target="#modal">
+        <button id="neat" data-itemId="${id}" type="button" class="modal-show btn btn-primary"  data-toggle="modal" data-target="#modal">
           View more info
         </button>
       </div>
@@ -53,6 +57,7 @@ $(() => {
       url: url,
       data: params
     }).done(items => {
+      console.log(items);
       $containerItems.empty();
       if (items.error) {
         $containerItems.prepend(generateError(items));
@@ -61,6 +66,7 @@ $(() => {
         }, 5000);
       } else {
         for (const obj of items) {
+          console.log(obj.is_sold);
           $containerItems.prepend(generateItemHTML(obj));
         }
       }
