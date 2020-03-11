@@ -1,19 +1,19 @@
-#search-form {
-  display: grid;
-  grid-template-areas:
-    "keyword keyword"
-    "min_price max_price"
-    "none submit";
-  > .keyword {
-    grid-area: keyword;
-  }
-  > .min-price {
-    grid-area: min_price;
-  }
-  > .max-price {
-    grid-area: max_price;
-  }
-  > .submit {
-    grid-area: submit;
-  }
-}
+// #search-form {
+//   display: grid;
+//   grid-template-areas:
+//     "keyword keyword"
+//     "min_price max_price"
+//     "none submit";
+//   > .keyword {
+//     grid-area: keyword;
+//   }
+//   > .min-price {
+//     grid-area: min_price;
+//   }
+//   > .max-price {
+//     grid-area: max_price;
+//   }
+//   // > .submit {
+//   //   grid-area: submit;
+//   // }
+// }
