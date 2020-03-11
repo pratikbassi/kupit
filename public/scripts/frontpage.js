@@ -35,7 +35,7 @@ $(() => {
       </div>
   
       <button data-itemId="${id}" type="button"
-        class="modal-show item-btn btn btn-primary" data-toggle="modal"
+        class="modal-show item-btn btn" data-toggle="modal"
         data-target="#modal">
         View more info
       </button>

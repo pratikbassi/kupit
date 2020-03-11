@@ -15,9 +15,18 @@
     "title title"
     "info favorite"
     "button button";
-  max-width: 800px;
-  border: $color-primary-3 solid medium;
-  padding: 0.5em;
+  border-color: $color-primary-4;
+  border-style: solid;
+  // border-top-style: none;
+  // border-bottom-style: none;
+  border-width: 1px;
+  border-radius: 0.5em;
+  padding: 0.5em 1em;
+  // background-color: $color-barely-grey;
+  transition: 300ms;
+  &:hover {
+    background-color: $color-primary-1;
+  }
   .item-img {
     grid-area: image;
     width: 100%;
@@ -43,5 +52,19 @@
   }
   .item-btn {
     grid-area: button;
+    background-color: $color-primary-0;
+    border-color: $color-primary-3;
+    color: $color-primary-1;
+    &:active {
+      background-color: $color-primary-3;
+    }
+    &:hover {
+      background-color: $color-primary-3;
+      color: $color-primary-1;
+    }
+    &:focus {
+      background-color: $color-primary-3;
+      box-shadow: 0 0 0 0.2rem $rgba-primary-3;
+    }
   }
 }
