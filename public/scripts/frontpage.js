@@ -19,27 +19,24 @@ $(() => {
     const htmlOutput = `
     <section id="item-id-${id}"
       class="container-md container-item ${obj.is_sold ? "is-sold" : ""}">
-      <div class="item-img">
       ${
         obj.is_sold
-          ? `<img class="img-thumbnail rounded" src="https://toppng.com/uploads/preview/sold-png-11553997926suvwzyklcq.png"/>`
-          : `<img class="img-thumbnail rounded" src="${image_url}"/>`
+          ? `<img class="item-img is-sold-img rounded" src="../images/sold.png"/>`
+          : ``
       }
-        
-      </div>
-      <div id="" class="item-favorite">
-        
-      </div>
+      <img class="item-img rounded" src="${image_url}"/>
 
+      <div id="" class="item-favorite"></div>
+
+      <h5 class="item-title">${title}</h5>
       <div class="item-info">
         <h5>${stock} in Stock</h5>
         <h6>Located: ${city}</h6>
       </div>
   
-      <h5 class="item-title">${title}</h5>
-      <button id="neat" data-itemId="${id}" type="button" 
-      class="modal-show item-btn btn btn-primary"  data-toggle="modal" 
-      data-target="#modal">
+      <button data-itemId="${id}" type="button"
+        class="modal-show item-btn btn" data-toggle="modal"
+        data-target="#modal">
         View more info
       </button>
  

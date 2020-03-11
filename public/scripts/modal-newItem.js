@@ -48,7 +48,7 @@ $(() => {
       </div>
       <div class="item-title">
         <h5>${title}</h5>
-        <button id="neat" data-itemId="${id}" type="button" class="modal-show btn btn-primary" data-toggle="modal" data-target="#modal">
+        <button data-itemId="${id}" type="button" class="modal-show btn btn-primary" data-toggle="modal" data-target="#modal">
           View more info
         </button>
       </div>

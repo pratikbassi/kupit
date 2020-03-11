@@ -3,7 +3,9 @@ const getItemWithId = function(db, id) {
     .query(
       `
   SELECT * FROM items
-  WHERE id = $1
+  WHERE is_viewable = true
+  AND id = $1
+
   `,
       [id]
     )
@@ -22,7 +24,8 @@ const getItemsWithUserId = function(db, userId) {
     .query(
       `
 SELECT * FROM items
-WHERE user_id = $1
+WHERE is_viewable = true
+AND user_id = $1
 `,
       [userId]
     )
@@ -41,7 +44,8 @@ const getFeaturedItems = function(db) {
     .query(
       `
   SELECT * FROM items
-  WHERE is_featured = true
+  WHERE is_viewable = true
+  AND is_featured = true
   `
     )
     .then(res => {
@@ -58,8 +62,8 @@ const addItem = function(db, item) {
   return db
     .query(
       `
-INSERT INTO items(user_id,price,description,title,stock,city)
-VALUES($1,$2,$3,$4,$5,$6)
+INSERT INTO items(user_id,price,description,title,stock,city,image_url)
+VALUES($1,$2,$3,$4,$5,$6,$7)
 RETURNING *;
 `,
       [
@@ -68,7 +72,8 @@ RETURNING *;
         item.description,
         item.title,
         item.stock,
-        item.city
+        item.city,
+        item.image_url
       ]
     )
     .then(res => {

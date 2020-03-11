@@ -3,7 +3,8 @@ const fetchFavItems = function(db, userId, itemId = null) {
   SELECT items.*, favorites.id AS fav_id, favorites.date AS fav_date
   FROM items
   LEFT JOIN favorites ON items.id = favorites.item_id
-  WHERE favorites.user_id = $1
+  WHERE is_viewable = true
+  AND favorites.user_id = $1
   `;
   let values = [userId];
   if (itemId) {

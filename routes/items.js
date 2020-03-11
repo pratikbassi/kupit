@@ -9,6 +9,7 @@ const {
   removeItem,
   getFeaturedItems
 } = require("./helpers/itemHelper");
+const { set_featured } = require("../db/db_scripts/set_featured");
 
 const checkOwner = function(db, itemId) {
   return db.query(`SELECT * FROM items WHERE id= $1;`, [itemId]).then(res => {
@@ -59,14 +60,16 @@ module.exports = db => {
     if (req.body.price && req.body.title) {
       const newItem = req.body;
       newItem.user_id = req.session.user.id;
-      addItem(db, newItem).then(item => {
-        if (!item) {
-          res.send({ error: "Something wrong happens" });
-          return;
-        } else {
-          res.json(item);
-        }
-      });
+      addItem(db, newItem)
+        .then(item => {
+          if (!item) {
+            res.send({ error: "Something wrong happens" });
+            return;
+          } else {
+            res.json(item);
+          }
+        })
+        .then(set_featured);
     } else {
       res.json({ error: "Price and title can't be empty" });
     }
