@@ -1,5 +1,5 @@
 $(() => {
-  $(".login").on("click", () => {
+  $("#login-btn").on("click", () => {
     const $modalBody = $("#modalBody");
     $modalBody.empty();
 

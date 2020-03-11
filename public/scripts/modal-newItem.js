@@ -108,10 +108,10 @@ $(() => {
     $modalBody.append(newItemhtml);
   });
 
-  $(".modal-body").on("submit", "#new-item-form", function() {
+  $modalBody.on("submit", "#new-item-form", function() {
     event.preventDefault();
     console.log("new item post");
 
-    PostAjax("/item/new", $(".newItem").serialize());
+    PostAjax("/item/new", $("#new-item-form").serialize());
   });
 });

@@ -1,40 +1,32 @@
 $(() => {
   // $(".admin-tools").on()
-  $(".modal-body").on(
-    "click",
-    ".single-item > .admin-tools > .remove",
-    function() {
-      const itemId = $(".remove")
-        .attr("class")
-        .split(" ")[1];
+  const $modalBody = $("#modalBody");
 
-      $.ajax({
-        url: `/item/delete/${itemId}`,
-        method: "PUT"
+  $modalBody.on("click", "#admin-remove", function() {
+    const $this = $(this);
+    const itemId = $this.data("itemid");
+    $.ajax({
+      url: `/item/delete/${itemId}`,
+      method: "PUT"
+    })
+      .then(item => {
+        window.location.href = "/#my-listings-btn";
+        location.reload();
       })
-        .then(item => {
-          window.location.href = "/";
-        })
-        .catch(e => console.error(e));
-    }
-  );
+      .catch(e => console.error(e));
+  });
 
-  $(".modal-body").on(
-    "click",
-    ".single-item > .admin-tools > .mark-sold",
-    () => {
-      const itemId = $(".mark-sold")
-        .attr("class")
-        .split(" ")[1];
-
-      $.ajax({
-        url: `/item/sold/${itemId}`,
-        method: "PUT"
+  $modalBody.on("click", "#admin-sold", function() {
+    const $this = $(this);
+    const itemId = $this.data("itemid");
+    $.ajax({
+      url: `/item/sold/${itemId}`,
+      method: "PUT"
+    })
+      .then(() => {
+        window.location.href = "/#my-listings-btn";
+        location.reload();
       })
-        .then(() => {
-          window.location.href = "/";
-        })
-        .catch(e => console.error(e));
-    }
-  );
+      .catch(e => console.error(e));
+  });
 });
