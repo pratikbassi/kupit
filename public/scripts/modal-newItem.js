@@ -64,7 +64,7 @@ $(() => {
   };
 
   const $modalBody = $("#modalBody");
-  $("#item-new").on("click", () => {
+  $("#item-new-btn").on("click", () => {
     event.preventDefault();
     $modalBody.empty();
     const newItemhtml = `

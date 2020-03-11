@@ -73,25 +73,24 @@ $(() => {
     loadAjax("/search", $this.serialize());
   });
 
-  $("#my-listings").on("click", function(event) {
+  $("#my-listings-btn").on("click", function(event) {
     event.preventDefault();
     const $this = $(this);
     const userID = escapeTxt($this.data("userid"));
     loadAjax(`/items/user/${userID}`);
   });
 
-  $("#my-favorites").on("click", function(event) {
+  $("#my-favorites-btn").on("click", function(event) {
     event.preventDefault();
     loadAjax(`/favorite`);
   });
 
-  console.log(window.location.hash, window.location.search);
   if (!window.location.hash && !window.location.search) {
     loadAjax("/featured");
   } else if (window.location.hash === "#my-favorite") {
     loadAjax(`/favorite`);
-  } else if (window.location.hash === "#my-listings") {
-    $("#my-listings").trigger("click");
+  } else if (window.location.hash === "#my-listings-btn") {
+    $("#my-listings-btn").trigger("click");
   } else if (window.location.search) {
     console.log(window.location.search);
     loadAjax("/search", window.location.search.slice(1));

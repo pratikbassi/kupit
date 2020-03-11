@@ -1,6 +1,6 @@
 $(() => {
   const $modalBody = $("#modalBody");
-  $("#search-show").on("click", () => {
+  $("#search-btn").on("click", () => {
     event.preventDefault();
     $modalBody.empty();
     const htmlOutput = `
