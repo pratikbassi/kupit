@@ -21,7 +21,9 @@ $(() => {
           $containerItems.empty();
         }, 5000);
       } else {
-        $containerItems.prepend(generateItemHTML(item));
+        // $containerItems.prepend(generateItemHTML(item));
+        console.log(item);
+        window.location.href = `/#itemid=${item.id}`;
       }
     });
   };
@@ -35,23 +37,28 @@ $(() => {
     const is_sold = escapeTxt(obj.is_sold);
     const htmlOutput = `
     <section id="item-id-${id}"
-      class="container-md container-item ${is_sold ? "is-sold" : ""}">
-      <div class="item-img">
-        <img class="img-thumbnail rounded" src="${image_url}"/>
-      </div>
-      <div id="" class="container-favorite">
-        
-      </div>
+      class="container-md container-item ${obj.is_sold ? "is-sold" : ""}">
+      ${
+        obj.is_sold
+          ? `<img class="item-img is-sold-img rounded" src="../images/sold.png"/>`
+          : ``
+      }
+      <img class="item-img rounded" src="${image_url}"/>
+
+      <div id="" class="item-favorite"></div>
+
+      <h5 class="item-title">${title}</h5>
       <div class="item-info">
         <h5>${stock} in Stock</h5>
         <h6>Located: ${city}</h6>
       </div>
-      <div class="item-title">
-        <h5>${title}</h5>
-        <button data-itemId="${id}" type="button" class="modal-show btn btn-primary" data-toggle="modal" data-target="#modal">
-          View more info
-        </button>
-      </div>
+  
+      <button data-itemId="${id}" type="button"
+        class="modal-show item-btn btn" data-toggle="modal"
+        data-target="#modal">
+        View more info
+      </button>
+ 
     </section>
     `;
     return htmlOutput;
@@ -84,8 +91,7 @@ $(() => {
 
   <div class="form-group">
     <label for="inputDescription">Description</label>
-    <textarea type="text" class="form-control" id="inputDescription" name="description">
-    </textarea>
+    <textarea type="text" class="form-control" id="inputDescription" name="description"></textarea>
   </div>
 
   <div class="form-row">

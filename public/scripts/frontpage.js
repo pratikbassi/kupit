@@ -51,6 +51,7 @@ $(() => {
     return errorOutput;
   };
 
+  // Loads items into the frontpage grid
   const loadAjax = (url, params) => {
     $.ajax({
       method: "GET",
@@ -75,6 +76,11 @@ $(() => {
     event.preventDefault();
     const $this = $(this);
     loadAjax("/search", $this.serialize());
+    history.pushState(
+      { searchquery: $this.serialize() },
+      "search",
+      `/?${$this.serialize()}`
+    );
   });
 
   $("#my-listings-btn").on("click", function(event) {
@@ -82,21 +88,35 @@ $(() => {
     const $this = $(this);
     const userID = escapeTxt($this.data("userid"));
     loadAjax(`/items/user/${userID}`);
+    window.location.hash = "my-listings";
   });
 
   $("#my-favorites-btn").on("click", function(event) {
     event.preventDefault();
     loadAjax(`/favorite`);
+    window.location.hash = "my-favorites";
   });
 
-  if (!window.location.hash && !window.location.search) {
-    loadAjax("/featured");
-  } else if (window.location.hash === "#my-favorite") {
-    loadAjax(`/favorite`);
-  } else if (window.location.hash === "#my-listings-btn") {
-    $("#my-listings-btn").trigger("click");
-  } else if (window.location.search) {
-    console.log(window.location.search);
-    loadAjax("/search", window.location.search.slice(1));
-  }
+  //triggers loadAjax depending on the URL
+  const reloadAjax = () => {
+    if (!window.location.hash && !window.location.search) {
+      loadAjax("/featured");
+    } else if (window.location.hash === "#my-favorites") {
+      loadAjax(`/favorite`);
+    } else if (window.location.hash === "#my-listings") {
+      $("#my-listings-btn").trigger("click");
+    } else if (window.location.hash.match("#itemid")) {
+      console.log(window.location.hash.slice(8));
+      loadAjax("/item/", window.location.search.slice(8));
+    } else if (window.location.search) {
+      console.log(window.location.search);
+      loadAjax("/search", window.location.search.slice(1));
+    }
+  };
+  reloadAjax();
+
+  //triggers when user clicks the back button
+  $(window).on("popstate", function(event) {
+    reloadAjax();
+  });
 });
