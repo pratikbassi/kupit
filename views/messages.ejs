@@ -11,37 +11,41 @@
 <body>
 
   <%- include('./partials/_navbar') %>
-  <main class="d-flex container-items">
-    <div class = 'container w-48'>
+  <main>
 
-      <div class="d-flex container-items">
 
-        <div class='container w-48'>
-          <img class='img-fluid img-thumbnail' src="<%=data[4]%>" alt='' >
-        </div>
+    <div class="main_body">
 
-        <div class="container border">
+        <img class='image_container' src="<%=data[4]%>" alt='' >
+
+        <div class="data_container">
           <p id='user_id'>User ID: <%- data[0]%> </p>
           <p>User Name: <%- data[1]%> </p>
           <p>User Email: <%- data[2]%> </p>
           <p>User Phone Number: <%- data[3]%> </p>
         </div>
-      </div>
-      <div id='message_list' class="container pre-scrollable border"></div>
-      <div id='message_outbox' class="container pre-scrollable border"></div>
+
+        <div class='item_display'></div>
+
+        <div id='message_list' class="message_list"></div>
+
+
+        <div class='message_box'>
+          <div id='message_display' class='message_display'>
+            Click on a Message to View!
+          </div>
+          <div class='input_form'>
+            <form id="reply" class='form_column'>
+              <textarea placeholder="Reply here!" class='input_text' required></textarea>
+              <button type='submit' class='submit_button'> Reply! </button>
+            </form>
+          </div>
+        </div>
+
+
+        <div id='submitted' class="submitted"> submitted!</div>
     </div>
-    <div class='container'>
-      <div id='message_display' class='container row p-3 w-48'>
-        Click on a Message to View!
-      </div>
-      <div class='container row'>
-        <form id="reply">
-          <textarea placeholder="Reply here!" required></textarea>
-          <button type='submit' class='btn btn-light '> Reply! </button>
-        </form>
-      </div>
-      <div id='submitted' class="container row"> submitted!</div>
-    </div>
+
 
 
   </main>
