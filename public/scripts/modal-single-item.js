@@ -41,11 +41,8 @@ $(() => {
     const htmlOutput = `
     <main class="container single-item">
       <div class="image">
-      ${
-        obj.is_sold
-          ? `<img src="https://toppng.com/uploads/preview/sold-png-11553997926suvwzyklcq.png">`
-          : `<img src="${image_url}">`
-      }
+      ${obj.is_sold ? `<img class="is-sold" src="../images/sold.png">` : ``}
+      <img  src="${image_url}">
         
       </div>
 

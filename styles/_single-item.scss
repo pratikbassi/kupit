@@ -3,8 +3,15 @@
 
   .image {
     margin-right: 20px;
-    img {
+    display: grid;
+    grid-template-areas: "image";
+    align-items: center;
+    > img {
       width: 45vh;
+      grid-area: image;
+      &.is-sold {
+        z-index: 200;
+      }
     }
   }
   .title {
