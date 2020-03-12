@@ -21,8 +21,7 @@ $(() => {
           $containerItems.empty();
         }, 5000);
       } else {
-        // $containerItems.prepend(generateItemHTML(item));
-        console.log(item);
+        $containerItems.prepend(generateItemHTML(item));
         window.location.href = `/#itemid=${item.id}`;
       }
     });
@@ -116,8 +115,6 @@ $(() => {
 
   $modalBody.on("submit", "#new-item-form", function() {
     event.preventDefault();
-    console.log("new item post");
-
     PostAjax("/item/new", $("#new-item-form").serialize());
   });
 });

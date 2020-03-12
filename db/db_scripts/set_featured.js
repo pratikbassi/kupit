@@ -17,16 +17,11 @@ const set_featured = function() {
       `SELECT id FROM items WHERE is_viewable = true; UPDATE items SET is_featured = false;`
     )
     .then(res => {
-      console.log("promise1", res.rows, res.rows.length);
       const count = res.rows.length;
-      console.log("randomInt", getRandomInt(count));
       let featuredIDs = [];
       for (let i = 0; i < 20; i++) {
         featuredIDs.push(getRandomInt(count));
       }
-      console.log(featuredIDs);
-      // return featuredIDs;
-
       return pool
         .query(
           `UPDATE items SET is_featured = true WHERE is_viewable = true AND id = ANY ($1); `,

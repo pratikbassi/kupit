@@ -106,10 +106,8 @@ $(() => {
     } else if (window.location.hash === "#my-listings") {
       $("#my-listings-btn").trigger("click");
     } else if (window.location.hash.match("#itemid")) {
-      console.log(window.location.hash.slice(8));
-      loadAjax("/item/", window.location.search.slice(8));
+      loadAjax("/item", window.location.search.slice(8));
     } else if (window.location.search) {
-      console.log(window.location.search);
       loadAjax("/search", window.location.search.slice(1));
     }
   };
