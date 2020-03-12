@@ -59,7 +59,7 @@
   .message_list {
     grid-area: list;
     max-width: 100%;
-    max-height: 45%;
+    height: 45%;
     overflow: scroll;
     border: solid 2px #320805;
     border-radius: 10px;
@@ -148,6 +148,11 @@
     }
     .item_display {
       height: fit-content;
+    }
+
+    .message_list {
+      height: 100%;
+
     }
   }
 }
