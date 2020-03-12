@@ -35,6 +35,10 @@
     .material-icons {
       display: flex;
       justify-content: center;
+      transition: 300ms;
+      &:hover {
+        transform: scale(1.5);
+      }
     }
   }
 }

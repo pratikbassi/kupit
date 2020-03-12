@@ -59,13 +59,13 @@ $(() => {
 
       <div class="message">
       <div class="icons">
-      <i class="material-icons chat-icon" ${
+      <i class="material-icons chat-icon animated faster" ${
         obj.is_sold ? `disabled` : ``
       }>chat_bubble_outline</i>
       <p>Message</p>
       </div>
       <div class="icons">
-        <i id="fav-item-id-${id}" data-itemid="${id}" class="material-icons favorite-icon">favorite_border</i>
+        <i id="fav-item-id-${id}" data-itemid="${id}" class="material-icons favorite-icon animated faster">favorite_border</i>
         <p>Favorite</p>
         </div>
         ${
@@ -105,7 +105,6 @@ $(() => {
       url: `/items/${$this.data("itemid")}`
     })
       .done(res => {
-        console.log(res.item);
         $modalBody.append(generateSingleItemHTML(res.item, res.user));
       })
       .then(function(res) {
@@ -123,6 +122,12 @@ $(() => {
   $modalBody.on("click", ".favorite-icon", function() {
     event.preventDefault();
     const $this = $(this);
+    $this.css("animation-name", "none");
+    $this.css("animation-name", "flip");
+    setTimeout(function() {
+      $this.css("animation-name", "none");
+    }, 500);
+
     if ($this.text() === "favorite_border") {
       $.post(`favorite/${$this.data("itemid")}`).done(function() {
         $this.text("favorite");
