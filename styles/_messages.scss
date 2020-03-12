@@ -122,6 +122,11 @@
 
   .input_form {
     width: 100%;
+    textarea {
+      outline: none;
+      padding: 5px;
+      margin-bottom: 5px;
+    }
   }
 
   @media only screen and (max-width: 992px) {
