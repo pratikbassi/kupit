@@ -65,8 +65,12 @@ $(() => {
           $containerItems.empty();
         }, 5000);
       } else {
-        for (const obj of items) {
-          $containerItems.prepend(generateItemHTML(obj));
+        if (Array.isArray(items)) {
+          for (const obj of items) {
+            $containerItems.prepend(generateItemHTML(obj));
+          }
+        } else {
+          $containerItems.prepend(generateItemHTML(items));
         }
       }
     });
@@ -93,7 +97,6 @@ $(() => {
 
   $("#my-favorites-btn").on("click", function(event) {
     event.preventDefault();
-    loadAjax(`/favorite`);
     window.location.hash = "my-favorites";
   });
 
@@ -105,15 +108,15 @@ $(() => {
       loadAjax(`/favorite`);
     } else if (window.location.hash === "#my-listings") {
       $("#my-listings-btn").trigger("click");
-    } else if (window.location.hash.match("#itemid")) {
-      loadAjax("/item", window.location.search.slice(8));
+    } else if (window.location.hash.match("#item_id")) {
+      loadAjax("/item", `item_id=${window.location.hash.slice(9)}`);
     } else if (window.location.search) {
       loadAjax("/search", window.location.search.slice(1));
     }
   };
   reloadAjax();
 
-  //triggers when user clicks the back button
+  //triggers when window.location.hash updates
   $(window).on("popstate", function(event) {
     reloadAjax();
   });

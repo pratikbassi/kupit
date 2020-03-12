@@ -21,46 +21,9 @@ $(() => {
           $containerItems.empty();
         }, 5000);
       } else {
-        $containerItems.prepend(generateItemHTML(item));
-        window.location.href = `/#itemid=${item.id}`;
+        window.location.href = `/#item_id=${item.id}`;
       }
     });
-  };
-
-  const generateItemHTML = obj => {
-    const image_url = escapeTxt(obj.image_url);
-    const title = escapeTxt(obj.title);
-    const stock = escapeTxt(obj.stock);
-    const city = escapeTxt(obj.city);
-    const id = escapeTxt(obj.id);
-    const is_sold = escapeTxt(obj.is_sold);
-    const htmlOutput = `
-    <section id="item-id-${id}"
-      class="container-md container-item ${obj.is_sold ? "is-sold" : ""}">
-      ${
-        obj.is_sold
-          ? `<img class="item-img is-sold-img rounded" src="../images/sold.png"/>`
-          : ``
-      }
-      <img class="item-img rounded" src="${image_url}"/>
-
-      <div id="" class="item-favorite"></div>
-
-      <h5 class="item-title">${title}</h5>
-      <div class="item-info">
-        <h5>${stock} in Stock</h5>
-        <h6>Located: ${city}</h6>
-      </div>
-  
-      <button data-itemId="${id}" type="button"
-        class="modal-show item-btn btn" data-toggle="modal"
-        data-target="#modal">
-        View more info
-      </button>
- 
-    </section>
-    `;
-    return htmlOutput;
   };
 
   const generateError = err => {
