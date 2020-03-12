@@ -11,11 +11,11 @@ const generateItem = (data) => {
   let returnString = `
   <img src=${data.image_url} class='msg_item'></img>
   <ul class='list'>
-    <li>${data.title}</li>
-    <li>${data.price}</li>
-    <li>${data.posting_date}</li>
-    <li>${data.stock}</li>
-    <li>${data.description}</li>
+    <li>Title:${data.title}</li>
+    <li>Price:${data.price}</li>
+    <li>Created:${data.posting_date}</li>
+    <li>Stock:${data.stock}</li>
+    <li>Desc:${data.description}</li>
   </ul>
   `
 
