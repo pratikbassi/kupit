@@ -49,6 +49,7 @@ $(() => {
     const stock = escapeTxt(obj.stock);
     const city = escapeTxt(obj.city);
     const description = escapeTxt(obj.description);
+    const isOwner = user ? user.id === ownerId : false;
     const htmlOutput = `
     <main class="container single-item">
       <div class="image">
@@ -80,7 +81,7 @@ $(() => {
         <p>Favorite</p>
         </div>
         ${
-          user.id == ownerId
+          isOwner
             ? `     
             <div class="icons">
         <i id="admin-remove" class="material-icons delete-icon" data-itemid="${id}" class="remove ${id}">delete_outline</i>
@@ -129,14 +130,16 @@ $(() => {
         $modalBody.append(generateSingleItemHTML(res.item, res.user));
       })
       .then(function(res) {
-        $.ajax({
-          method: "GET",
-          url: `/favorite/${res.item.id}`
-        }).done(item => {
-          if (item.length) {
-            $(`#fav-item-id-${item[0].id}`).text("favorite");
-          }
-        });
+        if (res.user) {
+          $.ajax({
+            method: "GET",
+            url: `/favorite/${res.item.id}`
+          }).done(item => {
+            if (item.length) {
+              $(`#fav-item-id-${item[0].id}`).text("favorite");
+            }
+          });
+        }
       });
   });
 
