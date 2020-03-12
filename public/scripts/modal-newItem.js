@@ -110,7 +110,6 @@ $(() => {
 
   $modalBody.on("submit", "#new-item-form", function() {
     event.preventDefault();
-    console.log("new item post");
 
     PostAjax("/item/new", $("#new-item-form").serialize());
   });
