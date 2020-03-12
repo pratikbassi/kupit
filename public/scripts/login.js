@@ -25,6 +25,7 @@ $(() => {
       id="login-email"
       name="email"
       aria-describedby="emailHelp"
+      required
     />
   </div>
   <div class="form-group">
@@ -35,6 +36,7 @@ $(() => {
       name="password"
       class="form-control"
       id="login-password"
+      required
     />
   </div>
   <button type="submit" class="btn btn-dark">Login</button>
@@ -51,6 +53,7 @@ $(() => {
       id="register-email"
       name="email"
       aria-describedby="emailHelp"
+      required
     />
   </div>
   <div class="form-group">
@@ -61,6 +64,7 @@ $(() => {
       name="password"
       class="form-control"
       id="register-password"
+      required
     />
   </div>
   <div class="form-group">
@@ -71,6 +75,7 @@ $(() => {
     placeholder="Enter phone number"
     id="phone_number"
     name="phone_number"
+    required
   />
   </div>
   <div class="form-group">
@@ -81,6 +86,7 @@ $(() => {
     placeholder="Enter username"
     id="name"
     name="name"
+    required
   />
   </div>
   <button type="submit" class="btn btn-dark">
