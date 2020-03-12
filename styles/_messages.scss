@@ -1,10 +1,10 @@
 .main_body {
   display: grid;
   grid-template-columns: 1fr 1fr 2fr;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto minmax(20em, auto);
   grid-template-areas:
-  'img info item'
-  'list input input';
+    "img info item"
+    "list input input";
   padding: 1em;
   grid-gap: 1em;
 
@@ -15,7 +15,6 @@
     border-radius: 10px;
     height: 100%;
     object-fit: cover;
-
   }
 
   .data_container {
@@ -31,7 +30,7 @@
     }
   }
 
-    .item_display {
+  .item_display {
     grid-area: item;
     max-width: 100%;
     height: 45vh;
@@ -39,20 +38,24 @@
     padding: 5%;
     border-radius: 10px;
 
-
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 6fr 7fr;
     grid-template-rows: auto;
-    grid-template-areas:
-    'item_img item_info';
+    grid-template-areas: "item_img item_info";
     li {
       grid-area: item_info;
       color: white;
     }
     .msg_item {
       grid-area: item_img;
-      max-width: 100%;
-      max-height: 100%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    ul {
+      overflow-y: auto;
+      overflow-x: hidden;
     }
   }
 
@@ -72,7 +75,6 @@
     justify-content: center;
   }
 
-
   .message_box {
     grid-area: input;
     width: 100%;
@@ -82,8 +84,8 @@
     grid-template-columns: 2fr 1fr;
     grid-template-rows: auto auto;
     grid-template-areas:
-    'text field'
-    'text submit';
+      "text field"
+      "text submit";
     grid-gap: 1em;
   }
 
@@ -95,7 +97,7 @@
     border-radius: 10px;
     height: 5%;
     width: 100%;
-    padding: .75%;
+    padding: 0.75%;
   }
 
   .input_text {
@@ -105,7 +107,6 @@
     resize: none;
     border: solid 2px #320805;
     border-radius: 10px;
-
   }
 
   .message_display {
@@ -123,20 +124,16 @@
     width: 100%;
   }
 
-
-
-
-
   @media only screen and (max-width: 992px) {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     grid-template-areas:
-    'img'
-    'info'
-    'item'
-    'list'
-    'input';
+      "img"
+      "info"
+      "item"
+      "list"
+      "input";
 
     .message_list {
       grid-area: list;
@@ -152,7 +149,6 @@
 
     .message_list {
       height: 100%;
-
     }
   }
 }
