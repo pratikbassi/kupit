@@ -115,10 +115,6 @@ $(() => {
 
   $modalBody.on("submit", "#new-item-form", function() {
     event.preventDefault();
-<<<<<<< HEAD
-=======
-
->>>>>>> messagebox
     PostAjax("/item/new", $("#new-item-form").serialize());
   });
 });
