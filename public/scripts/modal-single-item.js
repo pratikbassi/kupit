@@ -5,6 +5,17 @@ $(() => {
     return div.innerHTML;
   };
 
+  const PostAjax = (url, params) => {
+    $.ajax({
+      method: "POST",
+      url: url,
+      data: params,
+      dataType: "json"
+    }).done(message => {
+      console.log(message);
+    });
+  };
+
   const convertTime = mtime => {
     let currentTime = Date.now();
     let sub = currentTime - Date.parse(mtime);
@@ -83,7 +94,17 @@ $(() => {
             : `<div></div>`
         }
       </div>
-
+      <div class="new-message">
+        <form method="POST" action="" class="message-form">
+        <textarea
+          name="text"
+          rows="1"
+          placeholder="Contact the seller"
+          id="textarea"
+        ></textarea>
+        <button type="submit" value="Send" class="send-btn btn btn-success">Send</button>
+      </form>
+      </div>
       <div class="description">
       <article>
         <p>${description}</p>
@@ -143,6 +164,11 @@ $(() => {
   });
 
   $modalBody.on("click", ".chat-icon", function() {
-    console.log("chat");
+    $(".new-message").slideToggle("fast");
+    $("textarea").focus();
+  });
+  $modalBody.on("click", ".send-btn", function() {
+    event.preventDefault();
+    PostAjax("/messages", $(".message-form").serialize());
   });
 });
