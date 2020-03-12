@@ -96,7 +96,10 @@ $(() => {
         }
       </div>
       <div class="new-message">
-        <form method="POST" action="" class="message-form">
+        <form id="msg-seller" method="POST" action="" class="message-form">
+        <input id="user_id" type="hidden" value="${
+          user ? user.id : null
+        }" name="user_id">
         <textarea
           name="text"
           rows="1"
@@ -117,6 +120,8 @@ $(() => {
     return htmlOutput;
   };
 
+  let item;
+
   const $modalBody = $("#modalBody");
   $(".container-items").on("click", ".modal-show", function() {
     event.preventDefault();
@@ -127,6 +132,7 @@ $(() => {
       url: `/items/${$this.data("itemid")}`
     })
       .done(res => {
+        item = res.item;
         $modalBody.append(generateSingleItemHTML(res.item, res.user));
       })
       .then(function(res) {
@@ -170,8 +176,14 @@ $(() => {
     $(".new-message").slideToggle("fast");
     $("textarea").focus();
   });
-  $modalBody.on("click", ".send-btn", function() {
+  $modalBody.on("submit", "#msg-seller", function() {
     event.preventDefault();
-    PostAjax("/messages", $(".message-form").serialize());
+
+    const sender = $("#user_id").val();
+    const item_id = item.id;
+    const reciever = item.user_id;
+    const text = $("#textarea").val();
+
+    PostAjax("/messages", { sender, reciever, text, item_id });
   });
 });
