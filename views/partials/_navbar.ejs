@@ -13,13 +13,13 @@
     <ul class="navbar-nav navbar-nav__menu my-2 my-lg-0">
       <li id="search-btn" class="nav-item mr-lg-3 mt-lg-1 py-lg-3 px-lg-2"
         data-toggle="modal" data-target="#modal">
-        <p class="nav-item__text">Search</p>
+        <a class="nav-item__text">Search</a>
       </li>
 
       <% if (user === undefined) { %>
       <li id="login-btn" class="nav-item login mr-lg-3 mt-lg-1 py-lg-3 px-lg-2 "
         data-toggle="modal" data-target="#modal">
-        <p class="nav-item__text">Login</p>
+        <a class="nav-item__text">Login</a>
       </li>
 
       <% } else { %>
