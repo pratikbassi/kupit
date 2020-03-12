@@ -7,6 +7,21 @@ const generateButton = (data) => {
   return returnString;
 }
 
+const generateItem = (data) => {
+  let returnString = `
+  <img src=${data.image_url} class='msg_item'></img>
+  <ul class='list'>
+    <li>${data.title}</li>
+    <li>${data.price}</li>
+    <li>${data.posting_date}</li>
+    <li>${data.stock}</li>
+    <li>${data.description}</li>
+  </ul>
+  `
+
+  return returnString;
+}
+
 
 $(document).ready(function(){
 
@@ -37,19 +52,22 @@ $(document).ready(function(){
 
   $('#message_list').on('click','.test' , function() { //LETS USER VIEW MESSAGE
     $('#message_display').text('')
+    $('.item_display').empty()
     local_id = $(this).data().id
     $('#message_display').text(localData[local_id].body)
     $('#reply').show()
     $('#submitted').hide()
+    $.ajax({
+      method: 'GET',
+      url: '/item',
+      data: {item_id:localData[local_id].item_id}
+    }).done(
+      function(data){
+        $('.item_display').append(generateItem(data))
+      }
+    )
   });
-  $('#message_outbox').on('click','.test' , function() { //LETS USER VIEW MESSAGE
-    $('#message_display').text('')
-    local_id = $(this).data().id
-    $('#message_display').text(localData[local_id].body)
-    $('#reply').show()
-    $('#submitted').hide()
 
-  });
 
   $('#reply').on('submit', function(){ //LETS USER REPLY TO MESSAGE
     event.preventDefault();

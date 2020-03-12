@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 //const checkAdmin = require("./middlewares/checkAdmin");
 const checkLogin = require("./middlewares/checkLogin");
-const {user_data_search, user_message_list, user_message, submit_message} = require('../db/db_scripts/user_page_funcs')
+const {user_data_search, user_message_list, user_message, submit_message, get_item_by_id} = require('../db/db_scripts/user_page_funcs')
 const dbParams = require("../lib/db.js");
 
 const client = require('twilio')(dbParams.accountSid, dbParams.authToken);
@@ -60,7 +60,7 @@ module.exports = db => {
       let data = {
         from: `${userID}@sandbox9929a9ef0bcf4d75b0f3a2a7a04dccbe.mailgun.org`,
         to: `${data2.email}`,
-        subject: `You got a message on Kupit!`,
+        subject: `You got a message on Kupit! The sender's userID is in the 'from' of this email!`,
         text: `Respond to this message on Kupit! \n
         \n
         ${req.body.text}`
@@ -82,6 +82,12 @@ module.exports = db => {
     .catch(err => err)
   })
 
+  router.get('/item', (req, res) => {
+    get_item_by_id(req.query.item_id)
+    .then((data) => {
+      res.send(data)
+    })
+  })
 
 
 

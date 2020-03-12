@@ -56,5 +56,16 @@ const submit_message = function (sender, reciever, body, item_id) {
   return pool.query(queryString, values).then(res => res.rows[0]).catch(err => err)
 }
 
+const get_item_by_id = function (item_id) {
+  let values = [item_id]
+  let queryString = `
+  SELECT *
+  FROM items
+  where id = $1
+  `
 
-module.exports = {user_data_search, user_message_list, user_message, submit_message};
+  return pool.query(queryString, values).then(res => res.rows[0]).catch(err => err)
+
+}
+
+module.exports = {user_data_search, user_message_list, user_message, submit_message, get_item_by_id};
