@@ -10,7 +10,7 @@ $(() => {
       method: "PUT"
     })
       .then(item => {
-        window.location.href = "/#my-listings-btn";
+        window.location.href = "/#my-listings";
         location.reload();
       })
       .catch(e => console.error(e));
@@ -24,7 +24,7 @@ $(() => {
       method: "PUT"
     })
       .then(() => {
-        window.location.href = "/#my-listings-btn";
+        window.location.href = "/#my-listings";
         location.reload();
       })
       .catch(e => console.error(e));
