@@ -62,44 +62,67 @@
   #message_container {
     max-width: 100%;
     height: 45%;
-    overflow: scroll;
+    overflow-y: scroll;
     border: solid 2px #320805;
     border-radius: 10px;
     display: table-column;
   }
   .change_box {
-    background-color: #320805;
+    background-color: #312b2b;
     width: 100%;
     border: none;
-    border-radius: 5px;
+    // border-radius: 5px;
     transition: 0.1s;
     font-size: 17px;
     color: white;
+    outline: none;
+  }
+
+  .change_box:hover {
+    background-color: #473f3f ;
   }
 
   .change_box:active {
-    background-color: #88524e;
+    background-color: #5c5151;
   }
 
   .message_inbox .message_list{
-    overflow: scroll;
+    overflow-y: scroll;
     height: 100%;
     display: block;
   }
+  .test {
+    font-size: small;
+    justify-self: center;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: #320805;
+    color: white;
+    outline: none;
+    transition: 0.1s;
 
+  }
+  .test:hover {
+    background-color: #663a37 ;
+  }
 
+  .test:active {
+    background-color: #88524e;
+    outline: none;
+  }
 
   .form_column {
-    display: flex;
+    display: block;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    height: 100%;
   }
 
   .message_box {
     grid-area: input;
     width: 100%;
-    height: 100%;
+    max-height: 100%;
 
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -116,15 +139,23 @@
     color: white;
     border: none;
     border-radius: 10px;
-    height: 5%;
+    height: fit-content;
     width: 100%;
     padding: 0.75%;
+    outline: none;
+  }
+
+  .submit_button:hover {
+    box-shadow: grey 0px 0px 5px;
+  }
+  .submit_button:active {
+    box-shadow: black 0px 0px 5px;
   }
 
   .input_text {
     grid-area: field;
     width: 100%;
-    height: 30%;
+    height: 55%;
     resize: none;
     border: solid 2px #320805;
     border-radius: 10px;
@@ -152,28 +183,47 @@
     }
   }
 
+
   @media only screen and (max-width: 992px) {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
+    grid-template-rows: 35vh 30vh 45vh 50vh 20vh;
     grid-template-areas:
       "img"
       "info"
       "item"
       "list"
       "input";
+    overflow-y: scroll;
+
+    .image_container {
+      height: 100%;
+    }
 
     .message_list .message_inbox {
       grid-area: list;
       max-width: 100%;
-      max-height: 100%;
       height: 100%;
       overflow: scroll;
       border: solid 2px #320805;
       border-radius: 10px;
     }
     .item_display {
-      height: fit-content;
+      height: 100%;
+    }
+    #message_container {
+      height: 100%;
+    }
+    .message_display {
+      height: 100%;
+    }
+    .test {
+      height: 5vh;
+      margin-top: .4vh;
+      margin-bottom: .4vh;
+    }
+    .change_box {
+      height: 5vh;
     }
   }
 }

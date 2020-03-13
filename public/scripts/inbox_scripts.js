@@ -4,7 +4,7 @@ let local_id = 0
 let status = 0;
 
 const generateButton = (data) => {
-  let returnString = `<button data-id=${data.id} type='button' class='test btn btn-light btn-block'>Reciever: ${data.reciever} Sender: ${data.sender} Item ID: ${data.item_id}</button>`
+  let returnString = `<button id='buttons' data-id=${data.id} type='button' class='test '>Reciever: ${data.reciever} Sender: ${data.sender} Item ID: ${data.item_id}</button>`
 
   return returnString;
 };
