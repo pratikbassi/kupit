@@ -1,6 +1,8 @@
 //let $ = require('jquery');
 let localData = {}
 let local_id = 0
+let status = 0;
+
 const generateButton = (data) => {
   let returnString = `<button data-id=${data.id} type='button' class='test btn btn-light btn-block'>Reciever: ${data.reciever} Sender: ${data.sender} Item ID: ${data.item_id}</button>`
 
@@ -25,6 +27,10 @@ const generateItem = (data) => {
 
 $(document).ready(function(){
 
+  let user_string = $('#user_id').text().trim().replace(/\s/g, '*').split('*')
+  let user_id = parseFloat(user_string[user_string.length - 1])
+
+
   $('#reply').hide()
   $('#submitted').hide()
 
@@ -43,14 +49,34 @@ $(document).ready(function(){
       }
 
 
-      $("#message_list").append(generateButton(item)) //GENERATES LIST OF MESSAGES
+      if(item.sender === user_id) {
+        $("#message_list").append(generateButton(item)) //GENERATES OUTBOX OF MESSAGES
+
+      }
+      else {
+        $("#message_inbox").append(generateButton(item)) //GENERATES INBOX OF MESSAGES
+
+      }
     }
 
   });
 
-  if ($('#user_id'))
+  $('.change_box').on('click', function(){
+    if(status % 2 === 0) {
+      $('#message_list').show()
+      $('#message_inbox').hide()
+      $('.change_box').text('Switch to Inbox')
+      status++;
+    } else {
+      $('#message_inbox').show()
+      $('#message_list').hide()
+      $('.change_box').text('Switch to Outbox')
 
-  $('#message_list').on('click','.test' , function() { //LETS USER VIEW MESSAGE
+      status++;
+    }
+  })
+  $('#message_container').on('click','.test' , function() { //LETS USER VIEW MESSAGE
+    console.log('reached')
     $('#message_display').text('')
     $('.item_display').empty()
     local_id = $(this).data().id
