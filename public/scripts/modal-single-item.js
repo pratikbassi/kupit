@@ -49,7 +49,9 @@ $(() => {
     const stock = escapeTxt(obj.stock);
     const city = escapeTxt(obj.city);
     const description = escapeTxt(obj.description);
-    const isOwner = user ? user.id === ownerId : false;
+    const isOwner = user ? user.id === Number(ownerId) : false;
+    console.log("isOwner", isOwner, user.id, ownerId, typeof ownerId);
+
     const htmlOutput = `
     <main class="container single-item">
       <div class="image">
