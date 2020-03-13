@@ -71,15 +71,21 @@ $(() => {
 
       <div class="message">
       <div class="icons">
-      <i class="material-icons chat-icon animated faster" ${
-        obj.is_sold ? `disabled` : ``
-      }>chat_bubble_outline</i>
-      <p>Message</p>
+        <i class="material-icons chat-icon animated faster" ${
+          obj.is_sold ? `disabled` : ``
+        }>chat_bubble_outline</i>
+        <p>Message</p>
       </div>
+
+      ${
+        user
+          ? `
       <div class="icons">
         <i id="fav-item-id-${id}" data-itemid="${id}" class="material-icons favorite-icon animated faster">favorite_border</i>
         <p>Favorite</p>
-        </div>
+        </div>`
+          : ``
+      }
         ${
           isOwner
             ? `     
@@ -95,6 +101,10 @@ $(() => {
             : `<div></div>`
         }
       </div>
+      <div class="errormsg"></div>
+      ${
+        user
+          ? `
       <div class="new-message">
         <form id="msg-seller" method="POST" action="" class="message-form">
         <input id="user_id" type="hidden" value="${
@@ -108,7 +118,9 @@ $(() => {
         ></textarea>
         <button type="submit" value="Send" class="send-btn btn btn-success">Send</button>
       </form>
-      </div>
+      </div>`
+          : ``
+      }
       <div class="description">
       <article>
         <p>${description}</p>
@@ -121,7 +133,7 @@ $(() => {
   };
 
   let item;
-
+  let user;
   const $modalBody = $("#modalBody");
   $(".container-items").on("click", ".modal-show", function() {
     event.preventDefault();
@@ -133,6 +145,7 @@ $(() => {
     })
       .done(res => {
         item = res.item;
+        user = res.user;
         $modalBody.append(generateSingleItemHTML(res.item, res.user));
       })
       .then(function(res) {
@@ -173,9 +186,17 @@ $(() => {
   });
 
   $modalBody.on("click", ".chat-icon", function() {
-    $(".new-message").slideToggle("fast");
-    $("textarea").focus();
+    if (user === undefined) {
+      $(".errormsg").empty();
+      $(".errormsg").append(
+        `<div class="alert alert-danger">Please login to continue</div>`
+      );
+    } else {
+      $(".new-message").slideToggle("fast");
+      $("textarea").focus();
+    }
   });
+
   $modalBody.on("submit", "#msg-seller", function() {
     event.preventDefault();
 
