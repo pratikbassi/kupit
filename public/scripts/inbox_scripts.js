@@ -1,18 +1,10 @@
 //let $ = require('jquery');
-<<<<<<< HEAD
 let localData = {}
 let local_id = 0
 let status = 0;
 
 const generateButton = (data) => {
   let returnString = `<button data-id=${data.id} type='button' class='test btn btn-light btn-block'>Reciever: ${data.reciever} Sender: ${data.sender} Item ID: ${data.item_id}</button>`
-=======
-let localData = {};
-let local_id = 0;
-const generateButton = data => {
-  let returnString = `<button data-id=${data.id} type='button' class='test btn btn-light btn-block'>
-  Reciever: ${data.reciever} Sender: ${data.sender} Item ID: ${data.item_id}</button>`;
->>>>>>> f534cb4f9431096d4f21d8c8ba81635d704b09cd
 
   return returnString;
 };
@@ -54,7 +46,6 @@ const generateItem = data => {
   </ul>
   `;
   return returnString;
-<<<<<<< HEAD
 }
 
 
@@ -66,12 +57,6 @@ $(document).ready(function(){
 
   $('#reply').hide()
   $('#submitted').hide()
-=======
-};
-$(document).ready(function() {
-  $("#reply").hide();
-  $("#submitted").hide();
->>>>>>> f534cb4f9431096d4f21d8c8ba81635d704b09cd
 
   $.ajax({
     method: "GET",
@@ -79,7 +64,6 @@ $(document).ready(function() {
   }).done(items => {
     for (let item of items) {
       localData[item.id] = {
-<<<<<<< HEAD
         body:item.body,
         reciever:item.reciever,
         sender:item.sender,
@@ -131,35 +115,8 @@ $(document).ready(function() {
         $('.item_display').append(generateItem(data))
       }
     )
-=======
-        body: item.body,
-        reciever: item.reciever,
-        sender: item.sender,
-        item_id: item.item_id,
-        created: item.created
-      };
-      $("#message_list").append(generateButton(item)); //GENERATES LIST OF MESSAGES
-    }
->>>>>>> f534cb4f9431096d4f21d8c8ba81635d704b09cd
   });
 
-  if ($("#user_id"))
-    $("#message_list").on("click", ".test", function() {
-      //LETS USER VIEW MESSAGE
-      $("#message_display").text("");
-      $(".item_display").empty();
-      local_id = $(this).data().id;
-      $("#message_display").text(localData[local_id].body);
-      $("#reply").show();
-      $("#submitted").hide();
-      $.ajax({
-        method: "GET",
-        url: "/item",
-        data: { item_id: localData[local_id].item_id }
-      }).done(function(data) {
-        $(".item_display").append(generateItem(data));
-      });
-    });
 
   $("#reply").on("submit", function() {
     //LETS USER REPLY TO MESSAGE
