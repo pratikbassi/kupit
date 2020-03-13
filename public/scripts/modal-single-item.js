@@ -52,7 +52,7 @@ $(() => {
     const isOwner = user ? user.id === Number(ownerId) : false;
 
     const htmlOutput = `
-    <main class="container single-item">
+    <main class="container single-item ${obj.is_sold ? "is-sold" : ""}">
       <div class="image">
       ${obj.is_sold ? `<img class="is-sold" src="../images/sold.png">` : ``}
       <img  src="${image_url}">
@@ -106,7 +106,7 @@ $(() => {
       ${
         user
           ? `
-      <div class="new-message">
+      <div class="new-message" style="display: none">
         <form id="msg-seller" method="POST" action="" class="message-form">
         <input id="user_id" type="hidden" value="${
           user ? user.id : null

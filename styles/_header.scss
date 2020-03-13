@@ -37,12 +37,12 @@
   .navbar {
     .navbar-collapse {
       margin-top: 5px;
-      z-index: 1;
+      z-index: 1000;
       .navbar-nav {
         &__menu {
           background-color: #3b3a39;
           padding-bottom: 5px;
-          float: right;
+          width: 100%;
         }
         li {
           display: flex;
